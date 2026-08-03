@@ -1,0 +1,132 @@
+{
+  "header": {
+    "nav": {
+      "discover": "Discover",
+      "services": "Services",
+      "specialists": "Specialists",
+      "offers": "Offers"
+    },
+    "forBusiness": "For Business",
+    "signIn": "Sign In"
+  },
+  "hero": {
+    "eyebrow": "THE FUTURE OF WELLNESS",
+    "title": "Book your next <highlight>glow-up</highlight> in seconds",
+    "description": "Connect with the top-rated hair stylists, nail artists, and wellness professionals in your area. Professional care, scheduled with effortless flow.",
+    "searchPlaceholderSalon": "Salon or service...",
+    "searchPlaceholderLocation": "Location",
+    "searchButton": "Search",
+    "trustLine": "Trusted by 10,000+ clients"
+  },
+  "featuredSalons": {
+    "title": "Featured Salons",
+    "subtitle": "Book with the highest-rated professionals in your city",
+    "nextAvail": "Next avail",
+    "bookNow": "Book Now",
+    "items": [
+      {
+        "name": "The Velvet Loft",
+        "priceTier": "$$$",
+        "price": "From $45",
+        "rating": "4.9",
+        "location": "Downtown District • 1.2 miles",
+        "availability": "Today, 4:00 PM"
+      },
+      {
+        "name": "Iron & Silk Grooming",
+        "priceTier": "$$",
+        "price": "From $25",
+        "rating": "4.8",
+        "location": "West End • 0.8 miles",
+        "availability": "Tomorrow, 10:00 AM"
+      },
+      {
+        "name": "Lumina Spa",
+        "priceTier": "$$$$",
+        "price": "From $85",
+        "rating": "5.0",
+        "location": "North Hills • 3.5 miles",
+        "availability": "Tue, 2:30 PM"
+      }
+    ]
+  },
+  "popularServices": {
+    "title": "Popular Services",
+    "subtitle": "Explore our most requested treatments",
+    "viewAll": "View all",
+    "items": [
+      "Haircut & Styling",
+      "Hair Coloring",
+      "Manicure & Pedicure",
+      "Massage Therapy",
+      "Facial Treatment",
+      "Waxing"
+    ]
+  },
+  "testimonials": {
+    "title": "Loved by thousands of clients",
+    "items": [
+      {
+        "quote": "The easiest booking experience I've ever had. Found a new favorite stylist in minutes and the reminders are so helpful.",
+        "name": "Sarah M.",
+        "role": "Verified Customer"
+      },
+      {
+        "quote": "As a professional, I value efficiency. SalonFlow lets me book my appointments during my commute without any hassle.",
+        "name": "James R.",
+        "role": "Verified Customer"
+      },
+      {
+        "quote": "I love discovering new boutique salons through their featured list. I've found gems I never would have known about otherwise.",
+        "name": "Amelia K.",
+        "role": "Verified Customer"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "How do I book an appointment?",
+        "answer": "Simply search for a salon or service, pick an available time slot, and confirm your booking in seconds — no phone calls needed."
+      },
+      {
+        "question": "Can I cancel or reschedule my booking?",
+        "answer": "Yes, you can cancel or reschedule directly from your dashboard up until the salon's cancellation window."
+      },
+      {
+        "question": "Is SalonFlow free to use?",
+        "answer": "Yes, booking through SalonFlow is completely free for clients. Salons pay a small service fee per booking."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to transform your beauty routine?",
+    "subtitle": "Join thousands of clients who book their favorite salons in seconds with SalonFlow.",
+    "primaryButton": "Get Started",
+    "secondaryButton": "Learn More"
+  },
+  "footer": {
+    "brand": "SalonFlow",
+    "tagline": "Redefining the wellness booking experience through elegant technology and premium partnerships.",
+    "company": {
+      "title": "Company",
+      "aboutUs": "About Us",
+      "careers": "Careers",
+      "press": "Press"
+    },
+    "partnerships": {
+      "title": "Partnerships",
+      "joinAsPartner": "Join as Partner",
+      "forEnterprise": "For Enterprise",
+      "successStories": "Success Stories"
+    },
+    "legal": {
+      "title": "Legal & Help",
+      "helpCenter": "Help Center",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "copyright": "© 2026 SalonFlow. All rights reserved."
+  }
+}

@@ -25,3 +25,10 @@ next-env.d.ts
 
 # drizzle
 /drizzle/
+
+# claude
+.claude
+CLAUDE.md
+
+# editor
+.vscode
