@@ -52,7 +52,7 @@ export async function SiteHeader() {
             className="cursor-pointer rounded-lg px-6 shadow-soft-sm transition-shadow hover:shadow-soft"
             asChild
           >
-            <Link href="#">{t("signIn")}</Link>
+            <Link href="/auth/register">{t("signIn")}</Link>
           </Button>
           <MobileNav navLinks={navLinks} forBusinessLabel={t("forBusiness")} />
         </div>
