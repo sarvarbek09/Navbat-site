@@ -1,4 +1,4 @@
-import { SiteHeader } from "@/components/site-header";
+import { SiteHeader } from "@/components/header/site-header";
 import { HeroSection } from "@/components/hero-section";
 import { PopularServicesSection } from "@/components/popular-services-section";
 import { FeaturedSalonsSection } from "@/components/featured-salons-section";

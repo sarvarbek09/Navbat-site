@@ -7,7 +7,7 @@ export async function HeroSection() {
   const t = await getTranslations("hero");
 
   return (
-    <section className="relative flex items-center overflow-hidden py-24">
+    <section className="relative flex items-center overflow-hidden py-16 sm:py-20 lg:py-24">
       <div className="absolute inset-0">
         <Image
           src="/images/hero-salon.png"
@@ -23,14 +23,14 @@ export async function HeroSection() {
         <div className="absolute -bottom-32 left-1/3 size-96 rounded-full bg-accent/30 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto w-full max-w-[1280px] px-10">
+      <div className="relative mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-10">
         <div className="max-w-[576px] motion-safe:animate-fade-up">
           <p className="flex items-center gap-2 pb-4 text-xs font-semibold uppercase tracking-[0.1em] text-primary">
             <Sparkles className="size-3.5" />
             {t("eyebrow")}
           </p>
 
-          <h1 className="font-heading pb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="font-heading pb-5 text-3xl font-bold tracking-tight text-foreground sm:pb-6 sm:text-5xl lg:text-6xl">
             {t.rich("title", {
               highlight: (chunks) => (
                 <span className="text-primary">{chunks}</span>
@@ -38,7 +38,7 @@ export async function HeroSection() {
             })}
           </h1>
 
-          <p className="max-w-[512px] pb-6 text-lg text-muted-foreground">
+          <p className="max-w-[512px] pb-6 text-base text-muted-foreground sm:text-lg">
             {t("description")}
           </p>
 

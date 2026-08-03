@@ -6,9 +6,9 @@ export async function TestimonialsSection() {
   const items = t.raw("items") as { quote: string; name: string; role: string }[];
 
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-[1280px] px-10">
-        <h2 className="font-heading pb-12 text-center text-3xl font-semibold tracking-tight text-foreground">
+    <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
+        <h2 className="font-heading pb-8 text-center text-2xl font-semibold tracking-tight text-foreground sm:pb-12 sm:text-3xl">
           {t("title")}
         </h2>
 

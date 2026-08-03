@@ -17,11 +17,11 @@ export async function PopularServicesSection() {
   const items = t.raw("items") as string[];
 
   return (
-    <section className="bg-secondary/40 py-24">
-      <div className="mx-auto max-w-[1280px] px-10">
-        <div className="flex items-end justify-between pb-12">
+    <section className="bg-secondary/40 py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
+        <div className="flex items-end justify-between gap-4 pb-8 sm:pb-12">
           <div>
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground">
+            <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               {t("title")}
             </h2>
             <p className="mt-2 text-base text-muted-foreground">{t("subtitle")}</p>
@@ -35,7 +35,7 @@ export async function PopularServicesSection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-6">
           {items.map((label, i) => {
             const seed = serviceImageSeeds[i % serviceImageSeeds.length];
             return (

@@ -41,7 +41,7 @@ export default async function MyBookingsPage() {
               key={booking.id}
               className="rounded-lg border bg-white p-4"
             >
-              <div className="flex items-start justify-between">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className="font-medium">{salon.name}</p>
                   <p className="text-sm text-gray-500">{service.name}</p>
@@ -49,7 +49,7 @@ export default async function MyBookingsPage() {
                     {new Date(booking.date).toLocaleString("uz-UZ")}
                   </p>
                 </div>
-                <span className="rounded-full bg-gray-100 px-3 py-1 text-xs">
+                <span className="w-fit rounded-full bg-gray-100 px-3 py-1 text-xs">
                   {statusLabels[booking.status]}
                 </span>
               </div>

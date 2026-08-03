@@ -7,7 +7,40 @@
       "offers": "Offers"
     },
     "forBusiness": "For Business",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "comingSoon": {
+    "badge": "Coming soon",
+    "backHome": "Back to home",
+    "explore": {
+      "title": "Explore",
+      "description": "The salon and specialist discovery page is launching soon."
+    },
+    "services": {
+      "title": "Services",
+      "description": "The full list of services will live here. This page is under construction."
+    },
+    "specialists": {
+      "title": "Specialists",
+      "description": "A list of top specialists will appear on this page soon."
+    },
+    "offers": {
+      "title": "Offers",
+      "description": "Current promotions and discounts will be added here soon."
+    },
+    "business": {
+      "title": "For Business",
+      "description": "Details about SalonFlow for salon owners will live here soon."
+    },
+    "login": {
+      "title": "Log In",
+      "description": "The account login form will be connected soon."
+    },
+    "signup": {
+      "title": "Sign Up",
+      "description": "The new account signup form will be connected soon."
+    }
   },
   "hero": {
     "eyebrow": "THE FUTURE OF WELLNESS",
@@ -79,6 +112,31 @@
       {
         "quote": "I love discovering new boutique salons through their featured list. I've found gems I never would have known about otherwise.",
         "name": "Amelia K.",
+        "role": "Verified Customer"
+      },
+      {
+        "quote": "Seeing every available time in one place makes booking after work effortless.",
+        "name": "Madina S.",
+        "role": "Verified Customer"
+      },
+      {
+        "quote": "The reminders mean I never miss an appointment. The experience is fast and simple.",
+        "name": "Kamron A.",
+        "role": "Verified Customer"
+      },
+      {
+        "quote": "I can read reviews and confidently try a new salon. The quality has been consistently great.",
+        "name": "Dildora N.",
+        "role": "Verified Customer"
+      },
+      {
+        "quote": "I've booked several different services and every time the process has been clear and convenient.",
+        "name": "Sardor T.",
+        "role": "Verified Customer"
+      },
+      {
+        "quote": "Booking my favorite stylist now takes seconds. I recommend it to all my friends.",
+        "name": "Nigora B.",
         "role": "Verified Customer"
       }
     ]

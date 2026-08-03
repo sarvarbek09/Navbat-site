@@ -20,10 +20,10 @@ export async function FeaturedSalonsSection() {
   }[];
 
   return (
-    <section className="bg-white py-24">
-      <div className="mx-auto max-w-[1280px] px-10">
-        <div className="pb-12">
-          <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground">
+    <section className="bg-white py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-10">
+        <div className="pb-8 sm:pb-12">
+          <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             {t("title")}
           </h2>
           <p className="mt-2 text-base text-muted-foreground">
@@ -53,8 +53,8 @@ export async function FeaturedSalonsSection() {
                 </div>
               </div>
 
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-2 pb-2">
+              <div className="p-5 sm:p-6">
+                <div className="flex items-start justify-between gap-3 pb-2">
                   <h3 className="text-xl font-semibold text-foreground">{salon.name}</h3>
                   <div className="flex shrink-0 flex-col items-end">
                     <span className="text-base font-bold text-primary">{salon.price}</span>
@@ -69,7 +69,7 @@ export async function FeaturedSalonsSection() {
                   <span>{salon.location}</span>
                 </div>
 
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <p className="text-sm text-muted-foreground">
                     {t("nextAvail")}:{" "}
                     <span className="font-semibold text-foreground">

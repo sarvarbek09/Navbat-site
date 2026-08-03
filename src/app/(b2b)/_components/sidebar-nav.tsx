@@ -30,7 +30,7 @@ export function SidebarNav({
   logoutHref = "#",
 }: SidebarNavProps) {
   return (
-    <aside className="flex h-full w-64 flex-col border-r border-[#c7c4d8] bg-[#f5f2ff] px-4 py-6">
+    <aside className="hidden h-full w-64 shrink-0 flex-col border-r border-[#c7c4d8] bg-[#f5f2ff] px-4 py-6 lg:flex">
       <div className="flex items-center gap-2 px-2 pb-12">
         <Image src="/salonflow-mark.svg" alt="" width={25} height={25} />
         <span className="font-heading text-xl font-black leading-7 text-[#3525cd]">

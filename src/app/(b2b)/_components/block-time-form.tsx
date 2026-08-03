@@ -18,11 +18,11 @@ export function BlockTimeForm() {
   return (
     <form
       action={formAction}
-      className="mt-6 space-y-3 rounded-lg border bg-white p-4"
+      className="mt-6 space-y-3 rounded-lg border bg-white p-4 sm:p-5"
     >
       <h2 className="font-semibold">Band vaqt belgilash</h2>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid gap-3 sm:grid-cols-2">
         <div>
           <label className="block text-sm text-gray-500">Boshlanish</label>
           <input
@@ -67,7 +67,7 @@ export function BlockTimeForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="rounded bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700 disabled:opacity-50"
+        className="w-full rounded bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700 disabled:opacity-50 sm:w-auto"
       >
         {isPending ? "Saqlanmoqda..." : "Band qilish"}
       </button>
