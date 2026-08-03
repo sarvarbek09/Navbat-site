@@ -12,8 +12,7 @@
    * Colors are stored as space-separated RGB channels (e.g. "53 37 205"),
    * not full color functions. This lets tailwind.config.ts wrap each token
    * in rgb(var(--x) / <alpha>) so opacity modifiers (bg-primary/50, etc.)
-   * actually work — a literal oklch()/hex var() can't be split into an
-   * alpha channel by Tailwind at build time and silently fails instead.
+   * actually work.
    */
   :root {
     --background: 255 255 255;
@@ -106,9 +105,11 @@
     --sidebar-border: 35 35 35;
     --sidebar-ring: 115 115 115;
   }
+}
 
+@layer base {
   * {
-    @apply border-border outline-ring;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground antialiased;
