@@ -2,7 +2,7 @@ import { db } from "@/lib/db";
 import { bookings, services, users, salons } from "@/lib/schema";
 import { eq, and, count } from "drizzle-orm";
 import { getSession } from "@/lib/auth";
-import { updateBookingStatus } from "@/actions/booking.actions";
+import { ConfirmBookingButton } from "../_components/confirm-booking-button";
 
 const statusLabels: Record<string, string> = {
   pending: "Kutilmoqda",
@@ -72,16 +72,7 @@ export default async function DashboardPage() {
                 {statusLabels[booking.status]}
               </span>
               {booking.status === "pending" && (
-                <form action={updateBookingStatus}>
-                  <input type="hidden" name="id" value={booking.id} />
-                  <input type="hidden" name="status" value="confirmed" />
-                  <button
-                    type="submit"
-                    className="rounded bg-green-600 px-3 py-1 text-xs text-white hover:bg-green-700"
-                  >
-                    Tasdiqlash
-                  </button>
-                </form>
+                <ConfirmBookingButton bookingId={booking.id} />
               )}
             </div>
           </li>

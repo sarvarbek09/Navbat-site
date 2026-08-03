@@ -2,8 +2,9 @@ import { db } from "@/lib/db";
 import { blockedSlots, bookings, salons } from "@/lib/schema";
 import { eq, and, gte, desc } from "drizzle-orm";
 import { getSession } from "@/lib/auth";
-import { blockTimeSlot, unblockTimeSlot } from "@/actions/availability.actions";
+import { unblockTimeSlot } from "@/actions/availability.actions";
 import { ScheduleRealtime } from "@/components/schedule-realtime";
+import { BlockTimeForm } from "../_components/block-time-form";
 
 export default async function SchedulePage() {
   const session = await getSession();
@@ -51,47 +52,7 @@ export default async function SchedulePage() {
       </p>
 
       {/* Band vaqt qo'shish */}
-      <form action={blockTimeSlot} className="mt-6 space-y-3 rounded-lg border bg-white p-4">
-        <h2 className="font-semibold">Band vaqt belgilash</h2>
-
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="block text-sm text-gray-500">Boshlanish</label>
-            <input
-              type="datetime-local"
-              name="startTime"
-              required
-              className="mt-1 w-full rounded border px-3 py-2 text-sm"
-            />
-          </div>
-          <div>
-            <label className="block text-sm text-gray-500">Tugash</label>
-            <input
-              type="datetime-local"
-              name="endTime"
-              required
-              className="mt-1 w-full rounded border px-3 py-2 text-sm"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm text-gray-500">Sabab (ixtiyoriy)</label>
-          <input
-            type="text"
-            name="reason"
-            placeholder="Masalan: tushlik tanaffusi"
-            className="mt-1 w-full rounded border px-3 py-2 text-sm"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="rounded bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700"
-        >
-          Band qilish
-        </button>
-      </form>
+      <BlockTimeForm />
 
       {/* Band vaqtlar ro'yxati */}
       <section className="mt-8">

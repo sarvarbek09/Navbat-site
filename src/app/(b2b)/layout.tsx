@@ -1,40 +1,45 @@
-import Link from "next/link";
-import { getSession } from "@/lib/auth";
-import { redirect } from "next/navigation";
+"use client";
 
-export default async function B2BLayout({
+import { usePathname } from "next/navigation";
+import { BarChart3, Calendar, CreditCard, Users } from "lucide-react";
+import { SidebarNav } from "./_components/sidebar-nav";
+import { TopNavBar } from "./_components/top-nav-bar";
+
+// TODO: backend/DB ulanganda getSession() + rol tekshiruvini (owner) qayta yoqish kerak.
+// Hozircha DATABASE_URL yo'q, shuning uchun sessiya o'rniga static ma'lumot ko'rsatilmoqda.
+
+const navItems = [
+  { label: "Boshqaruv paneli", href: "/dashboard", icon: BarChart3 },
+  { label: "Jadval", href: "/schedule", icon: Calendar },
+  { label: "Mijozlar", href: "/clients", icon: Users },
+  { label: "Daromad", href: "/earnings", icon: CreditCard },
+];
+
+export default function B2BLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getSession();
-  if (!session || session.role !== "owner") redirect("/");
+  const pathname = usePathname();
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b bg-white">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-          <Link href="/dashboard" className="text-lg font-semibold">
-            Navbat Panel
-          </Link>
-          <nav className="flex gap-4 text-sm">
-            <Link href="/dashboard" className="hover:text-blue-600">
-              Dashboard
-            </Link>
-            <Link href="/schedule" className="hover:text-blue-600">
-              Jadval
-            </Link>
-            <Link href="/clients" className="hover:text-blue-600">
-              Mijozlar
-            </Link>
-            <Link href="/earnings" className="hover:text-blue-600">
-              Daromad
-            </Link>
-            <span className="text-gray-400">{session.name}</span>
-          </nav>
-        </div>
-      </header>
-      <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
+    <div className="flex h-screen">
+      <SidebarNav
+        items={navItems.map((item) => ({
+          ...item,
+          active: pathname === item.href,
+        }))}
+        ctaLabel="Yangi mijoz"
+        ctaHref="/clients"
+      />
+      <div className="flex flex-1 flex-col overflow-y-auto">
+        <TopNavBar
+          title="SalonFlow Boshqaruv Paneli"
+          userName="Admin"
+          userRole="Salon egasi"
+        />
+        <main className="flex-1 p-8">{children}</main>
+      </div>
     </div>
   );
 }
