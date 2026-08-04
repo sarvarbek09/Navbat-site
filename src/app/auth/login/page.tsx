@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const LoginPage = () => {
     return (
@@ -9,7 +10,9 @@ const LoginPage = () => {
                 <p className="text-lg font-light mb-4">Enter your details to access your wellness dashboard.</p>
             </div>
             <div className="w-full mb-4">
-                <Button className="w-full" variant={"outline"}>Sign in with Telegram</Button>
+                <Link href="/auth/telegram">
+                    <Button className="w-full" variant={"outline"}>Sign in with Telegram</Button>
+                </Link>
             </div>
             <div className="flex w-full items-center gap-2 mb-4"><div className="w-full h-0.5 bg-gray-300"></div><span className="w-full uppercase text-center text-sm text-[#777587]">or email</span><div className="w-full h-0.5 bg-gray-300"></div></div>
             <form className="w-full">

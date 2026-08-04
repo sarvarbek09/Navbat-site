@@ -118,6 +118,13 @@
   --sidebar-accent-foreground: 23 23 23;
   --sidebar-border: 229 229 229;
   --sidebar-ring: 161 161 161;
+
+
+  /* admin */
+
+  --sidebar-admin: #F5F2FF;
+  --nav-active: #E2DFFF;
+  --admin-bg: #FCF8FF;
 }
 
 .dark {
