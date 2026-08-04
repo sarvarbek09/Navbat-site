@@ -10,6 +10,8 @@ const publicPaths = [
   "/services",
   "/specialists",
   "/offers",
+  "/salons",
+  "/blog",
   "/business",
   "/login",
   "/signup",

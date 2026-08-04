@@ -1,14 +1,47 @@
 {
   "header": {
     "nav": {
-      "discover": "Kashf etish",
       "services": "Xizmatlar",
+      "salons": "Salonlar",
       "specialists": "Mutaxassislar",
-      "offers": "Aksiyalar"
+      "offers": "Aksiyalar",
+      "blog": "Blog"
     },
-    "forBusiness": "Biznes uchun",
+    "search": {
+      "placeholder": "Salon, xizmat yoki mutaxassis qidiring...",
+      "shortcutHint": "⌘K"
+    },
+    "location": {
+      "select": "Shaharni tanlang",
+      "cities": {
+        "tashkent": "Toshkent",
+        "samarkand": "Samarqand",
+        "bukhara": "Buxoro",
+        "andijan": "Andijon",
+        "namangan": "Namangan",
+        "fergana": "Farg'ona",
+        "nukus": "Nukus"
+      }
+    },
+    "forBusiness": "Salon qo'shing",
     "signIn": "Kirish",
-    "signUp": "Ro'yxatdan o'tish"
+    "signUp": "Ro'yxatdan o'tish",
+    "userMenu": {
+      "notifications": "Bildirishnomalar",
+      "favorites": "Sevimlilar",
+      "profile": "Profil",
+      "bookings": "Mening bandlovlarim",
+      "paymentMethods": "To'lov usullari",
+      "settings": "Sozlamalar",
+      "logout": "Chiqish"
+    },
+    "mobileNav": {
+      "home": "Bosh sahifa",
+      "search": "Qidiruv",
+      "bookings": "Bandlovlar",
+      "favorites": "Sevimlilar",
+      "profile": "Profil"
+    }
   },
   "comingSoon": {
     "badge": "Tez orada",
@@ -16,6 +49,26 @@
     "explore": {
       "title": "Kashf etish",
       "description": "Salonlar va mutaxassislarni kashf etish sahifasi tez orada ishga tushadi."
+    },
+    "salons": {
+      "title": "Salonlar",
+      "description": "Barcha salonlar ro'yxati va qidiruv natijalari tez orada shu yerda ko'rsatiladi."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Go'zallik va parvarish haqidagi maqolalar tez orada shu yerda joylashtiriladi."
+    },
+    "favorites": {
+      "title": "Sevimlilar",
+      "description": "Saqlab qo'ygan salonlaringiz tez orada shu yerda ko'rinadi."
+    },
+    "paymentMethods": {
+      "title": "To'lov usullari",
+      "description": "To'lov kartalaringizni boshqarish imkoniyati tez orada qo'shiladi."
+    },
+    "settings": {
+      "title": "Sozlamalar",
+      "description": "Hisob sozlamalari tez orada shu yerda ulanadi."
     },
     "services": {
       "title": "Xizmatlar",
@@ -46,10 +99,44 @@
     "eyebrow": "KELAJAK — SOG'LIQ VA GO'ZALLIK",
     "title": "Soniyalar ichida <highlight>go'zallik</highlight> seansingizni band qiling",
     "description": "Hududingizdagi eng yuqori reytingga ega soch ustalari, manikyur mutaxassislari va sog'liqni saqlash bo'yicha professionallar bilan bog'laning. Professional xizmat, bir zumda band qilinadi.",
-    "searchPlaceholderSalon": "Salon yoki xizmat...",
-    "searchPlaceholderLocation": "Manzil",
-    "searchButton": "Qidirish",
-    "trustLine": "10,000+ mijoz tomonidan tanlangan"
+    "cta": {
+      "primary": "Hoziroq band qiling",
+      "secondary": "Salon qo'shing"
+    },
+    "stats": {
+      "bookingsValue": "10K+",
+      "bookingsLabel": "Bandlovlar",
+      "salonsValue": "500+",
+      "salonsLabel": "Salonlar",
+      "ratingValue": "4.9",
+      "ratingLabel": "Reyting"
+    },
+    "features": {
+      "instantBooking": "Onlayn bron",
+      "verifiedProfessionals": "Tasdiqlangan mutaxassislar",
+      "securePayments": "Xavfsiz to'lovlar"
+    },
+    "mockup": {
+      "confirmedTitle": "Bron tasdiqlandi",
+      "confirmedSubtitle": "Bugun, 14:30",
+      "salonCardName": "Lumina Spa",
+      "salonCardMeta": "Soch va SPA",
+      "calendarLabel": "Bugungi jadval",
+      "ratingValue": "4.9",
+      "ratingCount": "2,400+ sharh",
+      "statusConfirmed": "Tasdiqlandi",
+      "specialistName": "Kamila Yusupova",
+      "customerLabel": "Mijoz",
+      "customerName": "Dilnoza Aliyeva",
+      "serviceLabel": "Xizmat",
+      "serviceName": "Soch olish + Soqol",
+      "dateTimeLabel": "Sana va vaqt",
+      "dateTimeValue": "Bugun, 14:30",
+      "priceLabel": "Narx",
+      "priceValue": "120,000 so'm",
+      "directionsButton": "Yo'nalish",
+      "rescheduleButton": "Qayta rejalashtirish"
+    }
   },
   "featuredSalons": {
     "title": "Tanlangan salonlar",

@@ -1,54 +1,88 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { useState } from "react";
+import { useMotionValueEvent, useScroll } from "framer-motion";
 import { HeaderNav, type NavLink } from "./header-nav";
 import { AuthActions } from "./auth-actions";
+import { UserMenu, type UserMenuLabels } from "./user-menu";
 import { LanguageSwitcher } from "./language-switcher";
-import { MobileNav } from "./mobile-nav";
+import { LocationSelector, type City } from "./location-selector";
+import { SearchBar } from "./search-bar";
+import { BusinessCta } from "./business-cta";
+import { Logo } from "./logo";
+import { MobileNav, type MobileNavLabels } from "./mobile-nav";
 
 type HeaderShellProps = {
   navLinks: NavLink[];
   forBusinessLabel: string;
   loginLabel: string;
   signUpLabel: string;
+  searchPlaceholder: string;
+  searchShortcutHint: string;
+  cities: City[];
+  locationSelectLabel: string;
+  session: { name: string } | null;
+  userMenuLabels: UserMenuLabels;
+  mobileNavLabels: MobileNavLabels;
 };
 
-export function HeaderShell({ navLinks, forBusinessLabel, loginLabel, signUpLabel }: HeaderShellProps) {
-  return (
-    <header className="sticky top-0 z-50 border-b border-white/50 bg-secondary/70 backdrop-blur-xl supports-[backdrop-filter]:bg-secondary/55">
-      <div className="mx-auto flex h-[4.5rem] max-w-[1440px] items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-10">
-        <div className="flex min-w-0 items-center gap-8 lg:gap-12">
-          <Link href="/" className="group flex items-center gap-2.5" aria-label="SalonFlow bosh sahifasi">
-            <motion.span
-              whileHover={{ rotate: 8, scale: 1.06 }}
-              className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-violet-500 text-white shadow-lg shadow-primary/25"
-            >
-              <Sparkles className="size-4" />
-            </motion.span>
-            <span className="font-heading text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-              Salon<span className="text-primary">Flow</span>
-            </span>
-          </Link>
+export function HeaderShell({
+  navLinks,
+  forBusinessLabel,
+  loginLabel,
+  signUpLabel,
+  searchPlaceholder,
+  searchShortcutHint,
+  cities,
+  locationSelectLabel,
+  session,
+  userMenuLabels,
+  mobileNavLabels,
+}: HeaderShellProps) {
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
 
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 8);
+  });
+
+  return (
+    <header
+      className={
+        "sticky top-0 z-50 border-b border-white/50 backdrop-blur-xl transition-all duration-300 supports-[backdrop-filter]:bg-secondary/55 " +
+        (scrolled ? "bg-secondary/85 shadow-md backdrop-blur-2xl" : "bg-secondary/70 shadow-none")
+      }
+    >
+      <div
+        className="mx-auto flex max-w-[1440px] items-center justify-between px-4 transition-[height] duration-300 sm:px-6 lg:px-10"
+        style={{ height: scrolled ? "3.75rem" : "5rem" }}
+      >
+        <div className="flex min-w-0 items-center gap-6 lg:gap-10">
+          <Logo scrolled={scrolled} />
           <HeaderNav navLinks={navLinks} />
         </div>
 
+        <div className="hidden min-w-0 flex-1 items-center justify-center px-4 lg:flex">
+          <SearchBar placeholder={searchPlaceholder} shortcutHint={searchShortcutHint} />
+        </div>
+
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <LocationSelector cities={cities} selectLabel={locationSelectLabel} />
           <LanguageSwitcher />
-          <Link
-            href="/business"
-            className="hidden rounded-xl px-3 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:bg-white/70 hover:text-foreground lg:inline-flex"
-          >
-            {forBusinessLabel}
-          </Link>
-          <AuthActions loginLabel={loginLabel} signUpLabel={signUpLabel} />
+          <BusinessCta label={forBusinessLabel} />
+          {session ? (
+            <UserMenu name={session.name} labels={userMenuLabels} />
+          ) : (
+            <AuthActions loginLabel={loginLabel} signUpLabel={signUpLabel} />
+          )}
           <MobileNav
             navLinks={navLinks}
             forBusinessLabel={forBusinessLabel}
             loginLabel={loginLabel}
             signUpLabel={signUpLabel}
+            searchPlaceholder={searchPlaceholder}
+            isAuthenticated={!!session}
+            mobileNavLabels={mobileNavLabels}
           />
         </div>
       </div>
