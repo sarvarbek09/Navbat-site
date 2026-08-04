@@ -17,10 +17,10 @@ export function TopNavBar({
   avatarSrc,
 }: TopNavBarProps) {
   return (
-    <header className="flex items-center justify-between border-b border-[#c7c4d8] bg-[#fcf8ff] px-6 py-3 shadow-soft-sm">
-      <div className="flex items-center gap-4">
-        <h2 className="text-xl font-bold text-[#3525cd]">{title}</h2>
-        <div className="relative w-64">
+    <header className="flex flex-wrap items-center justify-between gap-3 border-b border-[#c7c4d8] bg-[#fcf8ff] px-4 py-3 shadow-soft-sm sm:px-6">
+      <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+        <h2 className="truncate text-base font-bold text-[#3525cd] sm:text-xl">{title}</h2>
+        <div className="relative hidden w-48 md:block lg:w-64">
           <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#6b7280]" />
           <input
             type="search"
@@ -30,8 +30,8 @@ export function TopNavBar({
         </div>
       </div>
 
-      <div className="flex items-center gap-6">
-        <div className="flex items-center gap-2">
+      <div className="flex shrink-0 items-center gap-2 sm:gap-4">
+        <div className="hidden items-center gap-2 sm:flex">
           <button
             type="button"
             className="flex size-9 cursor-pointer items-center justify-center rounded-lg text-[#464555] transition-colors hover:bg-[#e2dfff]/50"
@@ -46,8 +46,8 @@ export function TopNavBar({
           </button>
         </div>
 
-        <div className="flex items-center gap-4 border-l border-[#c7c4d8] pl-6">
-          <div className="text-right">
+        <div className="flex items-center gap-2 border-l border-[#c7c4d8] pl-3 sm:gap-4 sm:pl-4 lg:pl-6">
+          <div className="hidden text-right md:block">
             <p className="text-sm font-bold text-[#1b1b24]">{userName}</p>
             <p className="text-xs font-semibold uppercase tracking-[0.6px] text-[#777587]">
               {userRole}

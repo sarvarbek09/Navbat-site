@@ -7,7 +7,40 @@
       "offers": "Aksiyalar"
     },
     "forBusiness": "Biznes uchun",
-    "signIn": "Kirish"
+    "signIn": "Kirish",
+    "signUp": "Ro'yxatdan o'tish"
+  },
+  "comingSoon": {
+    "badge": "Tez orada",
+    "backHome": "Bosh sahifaga qaytish",
+    "explore": {
+      "title": "Kashf etish",
+      "description": "Salonlar va mutaxassislarni kashf etish sahifasi tez orada ishga tushadi."
+    },
+    "services": {
+      "title": "Xizmatlar",
+      "description": "Barcha xizmatlar ro'yxati bu yerda ko'rsatiladi. Sahifa hozircha tayyorlanmoqda."
+    },
+    "specialists": {
+      "title": "Mutaxassislar",
+      "description": "Eng yaxshi mutaxassislar ro'yxati tez orada shu yerda paydo bo'ladi."
+    },
+    "offers": {
+      "title": "Aksiyalar",
+      "description": "Joriy aksiya va chegirmalar ro'yxati tez orada qo'shiladi."
+    },
+    "business": {
+      "title": "Biznes uchun",
+      "description": "Salon egalari uchun SalonFlow imkoniyatlari haqida ma'lumot tez orada shu yerda bo'ladi."
+    },
+    "login": {
+      "title": "Kirish",
+      "description": "Hisobingizga kirish shakli tez orada ulanadi."
+    },
+    "signup": {
+      "title": "Ro'yxatdan o'tish",
+      "description": "Yangi hisob yaratish shakli tez orada ulanadi."
+    }
   },
   "hero": {
     "eyebrow": "KELAJAK — SOG'LIQ VA GO'ZALLIK",
@@ -79,6 +112,31 @@
       {
         "quote": "Tanlangan ro'yxat orqali yangi mayda salonlarni kashf qilishni yaxshi ko'raman. Boshqacha bilmagan durdonalarni topdim.",
         "name": "Amira K.",
+        "role": "Tasdiqlangan mijoz"
+      },
+      {
+        "quote": "Bo'sh vaqtlarni bir joyda ko'rish juda qulay. Ishdan keyin o'zimga mos vaqtni tez topaman.",
+        "name": "Madina S.",
+        "role": "Tasdiqlangan mijoz"
+      },
+      {
+        "quote": "Eslatmalar tufayli endi hech qachon bronimni unutmayman. Ilova juda sodda va tez ishlaydi.",
+        "name": "Kamron A.",
+        "role": "Tasdiqlangan mijoz"
+      },
+      {
+        "quote": "Yangi salon tanlashdan oldin sharhlarni o'qib, bemalol bron qilaman. Xizmat sifati doim yaxshi.",
+        "name": "Dildora N.",
+        "role": "Tasdiqlangan mijoz"
+      },
+      {
+        "quote": "Bir necha marta turli xizmatlarga yozildim. Har safar jarayon tez, tushunarli va qulay bo'ldi.",
+        "name": "Sardor T.",
+        "role": "Tasdiqlangan mijoz"
+      },
+      {
+        "quote": "Sevimli ustamga yozilish endi atigi bir necha soniya oladi. Buni do'stlarimga ham tavsiya qilaman.",
+        "name": "Nigora B.",
         "role": "Tasdiqlangan mijoz"
       }
     ]

@@ -64,7 +64,7 @@ export default async function SchedulePage() {
             {blocked.map((slot) => (
               <li
                 key={slot.id}
-                className="flex items-center justify-between rounded-lg border border-red-100 bg-red-50 p-3"
+                className="flex flex-col gap-2 rounded-lg border border-red-100 bg-red-50 p-3 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div>
                   <p className="text-sm font-medium">

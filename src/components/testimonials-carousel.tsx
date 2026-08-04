@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Quote, Star, UserRound } from "lucide-react";
+import { useState } from "react";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+import { BadgeCheck, ChevronLeft, ChevronRight, Quote, Star, UserRound } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Testimonial = { quote: string; name: string; role: string };
@@ -10,95 +12,123 @@ type TestimonialsCarouselProps = {
   items: Testimonial[];
 };
 
+const AUTO_PLAY_DELAY = 4500;
+
 export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
-  const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>(
+    {
+      loop: true,
+      mode: "snap",
+      slides: { perView: 1, spacing: 16 },
+      breakpoints: {
+        "(min-width: 640px)": {
+          slides: { perView: 2, spacing: 24 },
+        },
+        "(min-width: 1024px)": {
+          slides: { perView: 3, spacing: 32 },
+        },
+      },
+      defaultAnimation: {
+        duration: 900,
+        easing: (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2,
+      },
+      slideChanged(instance) {
+        setActiveIndex(instance.track.details.rel);
+      },
+    },
+    [
+      (instance) => {
+        let timeout: ReturnType<typeof setTimeout>;
+        let mouseOver = false;
 
-  const scrollToIndex = (index: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelectorAll<HTMLElement>("[data-carousel-card]")[index];
-    card?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
-  };
+        const clearNextTimeout = () => clearTimeout(timeout);
+        const nextTimeout = () => {
+          clearNextTimeout();
+          if (mouseOver) return;
+          timeout = setTimeout(() => instance.next(), AUTO_PLAY_DELAY);
+        };
 
-  const scrollByCard = (direction: 1 | -1) => {
-    scrollToIndex(Math.min(Math.max(activeIndex + direction, 0), items.length - 1));
-  };
-
-  const handleScroll = () => {
-    const track = trackRef.current;
-    if (!track) return;
-    const cards = track.querySelectorAll<HTMLElement>("[data-carousel-card]");
-    let closest = 0;
-    let closestDistance = Infinity;
-    cards.forEach((card, i) => {
-      const distance = Math.abs(card.offsetLeft - track.scrollLeft);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closest = i;
-      }
-    });
-    setActiveIndex(closest);
-  };
+        instance.on("created", () => {
+          instance.container.addEventListener("mouseenter", () => {
+            mouseOver = true;
+            clearNextTimeout();
+          });
+          instance.container.addEventListener("mouseleave", () => {
+            mouseOver = false;
+            nextTimeout();
+          });
+          nextTimeout();
+        });
+        instance.on("dragStarted", clearNextTimeout);
+        instance.on("animationEnded", nextTimeout);
+        instance.on("updated", nextTimeout);
+        instance.on("destroyed", clearNextTimeout);
+      },
+    ]
+  );
 
   return (
     <div className="relative">
-      <div
-        ref={trackRef}
-        onScroll={handleScroll}
-        className="flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
+      <div ref={sliderRef} className="keen-slider">
         {items.map((item) => (
-          <div
+          <article
             key={item.name}
-            data-carousel-card
-            className="relative w-[85%] shrink-0 snap-center rounded-2xl border border-border bg-secondary/30 p-8 shadow-soft transition-shadow duration-300 hover:shadow-soft-lg sm:w-[45%] lg:w-[31%]"
+            className="keen-slider__slide flex h-auto"
           >
-            <Quote className="absolute right-6 top-6 size-8 text-primary/10" strokeWidth={1.5} />
+            <div className="relative flex w-full flex-col rounded-2xl border border-border bg-secondary/30 p-6 shadow-soft transition-all duration-500 ease-in-out hover:-translate-y-1 hover:shadow-soft-lg sm:p-8">
+              <Quote className="absolute right-6 top-6 size-8 text-primary/10" strokeWidth={1.5} />
 
-            <div className="flex gap-1 pb-5 text-amber-400">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-5 fill-current" />
-              ))}
-            </div>
-
-            <p className="pb-7 text-base leading-relaxed text-foreground">
-              &ldquo;{item.quote}&rdquo;
-            </p>
-
-            <div className="flex items-center gap-3">
-              <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary ring-4 ring-primary/5">
-                <UserRound className="size-6" />
+              <div className="flex gap-1 pb-5 text-amber-400">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="size-5 fill-current" />
+                ))}
               </div>
-              <div>
-                <p className="text-sm font-semibold text-foreground">{item.name}</p>
-                <p className="text-sm text-muted-foreground">{item.role}</p>
+
+              <p className="pb-7 text-base leading-relaxed text-foreground">
+                &ldquo;{item.quote}&rdquo;
+              </p>
+
+              <div className="mt-auto flex items-center gap-3">
+                <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary ring-4 ring-primary/5">
+                  <UserRound className="size-6" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">{item.name}</p>
+                  <p className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <BadgeCheck
+                      className="size-4 shrink-0 fill-[#0095f6] text-white"
+                      aria-label="Tasdiqlangan akkaunt"
+                    />
+                    {item.role}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
       <div className="mt-8 flex items-center justify-center gap-6">
         <button
           type="button"
-          onClick={() => scrollByCard(-1)}
+          onClick={() => slider.current?.prev()}
           className="flex size-10 cursor-pointer items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
           aria-label="Oldingi"
         >
           <ChevronLeft className="size-5" />
         </button>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" aria-label="Sharhlar navigatsiyasi">
           {items.map((item, i) => (
             <button
               key={item.name}
               type="button"
-              onClick={() => scrollToIndex(i)}
+              onClick={() => slider.current?.moveToIdx(i)}
               aria-label={`${i + 1}-sharh`}
               aria-current={activeIndex === i}
               className={cn(
-                "h-2 cursor-pointer rounded-full transition-all duration-300",
+                "h-2 cursor-pointer rounded-full transition-all duration-300 ease-in-out",
                 activeIndex === i ? "w-6 bg-primary" : "w-2 bg-border hover:bg-primary/40"
               )}
             />
@@ -107,7 +137,7 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
 
         <button
           type="button"
-          onClick={() => scrollByCard(1)}
+          onClick={() => slider.current?.next()}
           className="flex size-10 cursor-pointer items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
           aria-label="Keyingi"
         >

@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { BarChart3, Calendar, CreditCard, Users } from "lucide-react";
+import Link from "next/link";
 import { SidebarNav } from "./_components/sidebar-nav";
 import { TopNavBar } from "./_components/top-nav-bar";
 
@@ -23,7 +24,7 @@ export default function B2BLayout({
   const pathname = usePathname();
 
   return (
-    <div className="flex h-screen">
+    <div className="min-h-screen bg-[#fcf8ff] lg:flex lg:h-screen">
       <SidebarNav
         items={navItems.map((item) => ({
           ...item,
@@ -32,13 +33,28 @@ export default function B2BLayout({
         ctaLabel="Yangi mijoz"
         ctaHref="/clients"
       />
-      <div className="flex flex-1 flex-col overflow-y-auto">
+      <div className="flex min-w-0 flex-1 flex-col lg:overflow-y-auto">
         <TopNavBar
           title="SalonFlow Boshqaruv Paneli"
           userName="Admin"
           userRole="Salon egasi"
         />
-        <main className="flex-1 p-8">{children}</main>
+        <nav className="flex overflow-x-auto border-b border-[#c7c4d8] bg-[#f5f2ff] px-4 lg:hidden">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`shrink-0 border-b-2 px-3 py-3 text-sm font-medium ${
+                pathname === item.href
+                  ? "border-[#3525cd] text-[#3525cd]"
+                  : "border-transparent text-[#464555]"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <main className="flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
       </div>
     </div>
   );

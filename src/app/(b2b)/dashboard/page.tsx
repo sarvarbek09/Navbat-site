@@ -46,7 +46,7 @@ export default async function DashboardPage() {
     <div>
       <h1 className="text-2xl font-bold">{salon.name}</h1>
 
-      <div className="mt-6 grid grid-cols-3 gap-4">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
         <div className="rounded-lg border bg-white p-4">
           <p className="text-sm text-gray-500">Kutilayotgan</p>
           <p className="text-2xl font-bold">{pendingCount.count}</p>
@@ -58,7 +58,7 @@ export default async function DashboardPage() {
         {recentBookings.map(({ booking, service, client }) => (
           <li
             key={booking.id}
-            className="flex items-center justify-between rounded-lg border bg-white p-4"
+            className="flex flex-col gap-3 rounded-lg border bg-white p-4 sm:flex-row sm:items-center sm:justify-between"
           >
             <div>
               <p className="font-medium">{client.name}</p>
@@ -67,7 +67,7 @@ export default async function DashboardPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3 sm:justify-end">
               <span className="text-xs text-gray-400">
                 {statusLabels[booking.status]}
               </span>

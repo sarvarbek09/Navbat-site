@@ -52,7 +52,7 @@ export default async function EarningsPage() {
         {completedBookings.map(({ booking, service }) => (
           <li
             key={booking.id}
-            className="flex items-center justify-between rounded-lg border bg-white p-4"
+            className="flex flex-col gap-2 rounded-lg border bg-white p-4 sm:flex-row sm:items-center sm:justify-between"
           >
             <div>
               <p className="font-medium">{service.name}</p>
@@ -60,7 +60,7 @@ export default async function EarningsPage() {
                 {new Date(booking.date).toLocaleDateString("uz-UZ")}
               </p>
             </div>
-            <p className="font-medium">
+            <p className="font-medium sm:text-right">
               {service.price.toLocaleString()} so&apos;m
             </p>
           </li>
