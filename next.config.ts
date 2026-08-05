@@ -21,6 +21,23 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  webpack: (config, { dev }) => {
+    if (dev) {
+      // Development cache: max 200 MB, 14 days expiry
+      config.cache = {
+        type: "filesystem",
+        maxMemoryGenerations: 1,
+        memoryCacheUnaffected: false,
+        compression: "gzip",
+        store: "pack",
+        maxAge: 1000 * 60 * 60 * 24 * 14, // 14 days
+        buildDependencies: {
+          config: [__filename],
+        },
+      };
+    }
+    return config;
+  },
 };
 
 export default withNextIntl(nextConfig);
