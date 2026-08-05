@@ -1,14 +1,47 @@
 {
   "header": {
     "nav": {
-      "discover": "Discover",
       "services": "Services",
+      "salons": "Salons",
       "specialists": "Specialists",
-      "offers": "Offers"
+      "offers": "Offers",
+      "blog": "Blog"
     },
-    "forBusiness": "For Business",
+    "search": {
+      "placeholder": "Search salons, services or specialists...",
+      "shortcutHint": "⌘K"
+    },
+    "location": {
+      "select": "Select city",
+      "cities": {
+        "tashkent": "Tashkent",
+        "samarkand": "Samarkand",
+        "bukhara": "Bukhara",
+        "andijan": "Andijan",
+        "namangan": "Namangan",
+        "fergana": "Fergana",
+        "nukus": "Nukus"
+      }
+    },
+    "forBusiness": "Add Your Salon",
     "signIn": "Sign In",
-    "signUp": "Sign Up"
+    "signUp": "Sign Up",
+    "userMenu": {
+      "notifications": "Notifications",
+      "favorites": "Favorites",
+      "profile": "Profile",
+      "bookings": "My Bookings",
+      "paymentMethods": "Payment Methods",
+      "settings": "Settings",
+      "logout": "Log Out"
+    },
+    "mobileNav": {
+      "home": "Home",
+      "search": "Search",
+      "bookings": "Bookings",
+      "favorites": "Favorites",
+      "profile": "Profile"
+    }
   },
   "comingSoon": {
     "badge": "Coming soon",
@@ -16,6 +49,26 @@
     "explore": {
       "title": "Explore",
       "description": "The salon and specialist discovery page is launching soon."
+    },
+    "salons": {
+      "title": "Salons",
+      "description": "The full list of salons and search results will live here soon."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Beauty and self-care articles will be published here soon."
+    },
+    "favorites": {
+      "title": "Favorites",
+      "description": "Salons you've saved will appear here soon."
+    },
+    "paymentMethods": {
+      "title": "Payment Methods",
+      "description": "Managing your payment cards will be added here soon."
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Account settings will be connected here soon."
     },
     "services": {
       "title": "Services",
@@ -46,10 +99,44 @@
     "eyebrow": "THE FUTURE OF WELLNESS",
     "title": "Book your next <highlight>glow-up</highlight> in seconds",
     "description": "Connect with the top-rated hair stylists, nail artists, and wellness professionals in your area. Professional care, scheduled with effortless flow.",
-    "searchPlaceholderSalon": "Salon or service...",
-    "searchPlaceholderLocation": "Location",
-    "searchButton": "Search",
-    "trustLine": "Trusted by 10,000+ clients"
+    "cta": {
+      "primary": "Book Now",
+      "secondary": "Add Your Salon"
+    },
+    "stats": {
+      "bookingsValue": "10K+",
+      "bookingsLabel": "Bookings",
+      "salonsValue": "500+",
+      "salonsLabel": "Salons",
+      "ratingValue": "4.9",
+      "ratingLabel": "Rating"
+    },
+    "features": {
+      "instantBooking": "Instant Booking",
+      "verifiedProfessionals": "Verified Professionals",
+      "securePayments": "Secure Payments"
+    },
+    "mockup": {
+      "confirmedTitle": "Booking confirmed",
+      "confirmedSubtitle": "Today, 2:30 PM",
+      "salonCardName": "Lumina Spa",
+      "salonCardMeta": "Hair & Spa",
+      "calendarLabel": "Today's schedule",
+      "ratingValue": "4.9",
+      "ratingCount": "2,400+ reviews",
+      "statusConfirmed": "Confirmed",
+      "specialistName": "Camila Yusupova",
+      "customerLabel": "Customer",
+      "customerName": "Dilnoza Aliyeva",
+      "serviceLabel": "Service",
+      "serviceName": "Haircut + Beard Trim",
+      "dateTimeLabel": "Date & time",
+      "dateTimeValue": "Today, 2:30 PM",
+      "priceLabel": "Price",
+      "priceValue": "$12.00",
+      "directionsButton": "Directions",
+      "rescheduleButton": "Reschedule"
+    }
   },
   "featuredSalons": {
     "title": "Featured Salons",

@@ -1,14 +1,47 @@
 {
   "header": {
     "nav": {
-      "discover": "Kashf etish",
       "services": "Xizmatlar",
+      "salons": "Salonlar",
       "specialists": "Mutaxassislar",
-      "offers": "Aksiyalar"
+      "offers": "Aksiyalar",
+      "blog": "Blog"
     },
-    "forBusiness": "Biznes uchun",
+    "search": {
+      "placeholder": "Salon, xizmat yoki mutaxassis qidiring...",
+      "shortcutHint": "⌘K"
+    },
+    "location": {
+      "select": "Shaharni tanlang",
+      "cities": {
+        "tashkent": "Toshkent",
+        "samarkand": "Samarqand",
+        "bukhara": "Buxoro",
+        "andijan": "Andijon",
+        "namangan": "Namangan",
+        "fergana": "Farg'ona",
+        "nukus": "Nukus"
+      }
+    },
+    "forBusiness": "Salon qo'shing",
     "signIn": "Kirish",
-    "signUp": "Ro'yxatdan o'tish"
+    "signUp": "Ro'yxatdan o'tish",
+    "userMenu": {
+      "notifications": "Bildirishnomalar",
+      "favorites": "Sevimlilar",
+      "profile": "Profil",
+      "bookings": "Mening bandlovlarim",
+      "paymentMethods": "To'lov usullari",
+      "settings": "Sozlamalar",
+      "logout": "Chiqish"
+    },
+    "mobileNav": {
+      "home": "Bosh sahifa",
+      "search": "Qidiruv",
+      "bookings": "Bandlovlar",
+      "favorites": "Sevimlilar",
+      "profile": "Profil"
+    }
   },
   "comingSoon": {
     "badge": "Tez orada",
@@ -16,6 +49,26 @@
     "explore": {
       "title": "Kashf etish",
       "description": "Salonlar va mutaxassislarni kashf etish sahifasi tez orada ishga tushadi."
+    },
+    "salons": {
+      "title": "Salonlar",
+      "description": "Barcha salonlar ro'yxati va qidiruv natijalari tez orada shu yerda ko'rsatiladi."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Go'zallik va parvarish haqidagi maqolalar tez orada shu yerda joylashtiriladi."
+    },
+    "favorites": {
+      "title": "Sevimlilar",
+      "description": "Saqlab qo'ygan salonlaringiz tez orada shu yerda ko'rinadi."
+    },
+    "paymentMethods": {
+      "title": "To'lov usullari",
+      "description": "To'lov kartalaringizni boshqarish imkoniyati tez orada qo'shiladi."
+    },
+    "settings": {
+      "title": "Sozlamalar",
+      "description": "Hisob sozlamalari tez orada shu yerda ulanadi."
     },
     "services": {
       "title": "Xizmatlar",

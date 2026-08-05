@@ -1,14 +1,47 @@
 {
   "header": {
     "nav": {
-      "discover": "Обзор",
       "services": "Услуги",
+      "salons": "Салоны",
       "specialists": "Специалисты",
-      "offers": "Акции"
+      "offers": "Акции",
+      "blog": "Блог"
     },
-    "forBusiness": "Для бизнеса",
+    "search": {
+      "placeholder": "Найдите салон, услугу или специалиста...",
+      "shortcutHint": "⌘K"
+    },
+    "location": {
+      "select": "Выберите город",
+      "cities": {
+        "tashkent": "Ташкент",
+        "samarkand": "Самарканд",
+        "bukhara": "Бухара",
+        "andijan": "Андижан",
+        "namangan": "Наманган",
+        "fergana": "Фергана",
+        "nukus": "Нукус"
+      }
+    },
+    "forBusiness": "Добавить салон",
     "signIn": "Войти",
-    "signUp": "Регистрация"
+    "signUp": "Регистрация",
+    "userMenu": {
+      "notifications": "Уведомления",
+      "favorites": "Избранное",
+      "profile": "Профиль",
+      "bookings": "Мои записи",
+      "paymentMethods": "Способы оплаты",
+      "settings": "Настройки",
+      "logout": "Выйти"
+    },
+    "mobileNav": {
+      "home": "Главная",
+      "search": "Поиск",
+      "bookings": "Записи",
+      "favorites": "Избранное",
+      "profile": "Профиль"
+    }
   },
   "comingSoon": {
     "badge": "Скоро",
@@ -16,6 +49,26 @@
     "explore": {
       "title": "Обзор",
       "description": "Страница обзора салонов и специалистов скоро заработает."
+    },
+    "salons": {
+      "title": "Салоны",
+      "description": "Список всех салонов и результаты поиска скоро появятся здесь."
+    },
+    "blog": {
+      "title": "Блог",
+      "description": "Статьи о красоте и уходе скоро будут опубликованы здесь."
+    },
+    "favorites": {
+      "title": "Избранное",
+      "description": "Сохранённые салоны скоро появятся здесь."
+    },
+    "paymentMethods": {
+      "title": "Способы оплаты",
+      "description": "Управление платёжными картами скоро будет добавлено."
+    },
+    "settings": {
+      "title": "Настройки",
+      "description": "Настройки аккаунта скоро будут подключены здесь."
     },
     "services": {
       "title": "Услуги",

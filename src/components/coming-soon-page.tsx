@@ -3,7 +3,19 @@ import { ArrowLeft, Sparkles } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 type ComingSoonPageProps = {
-  namespace: "explore" | "services" | "specialists" | "offers" | "business" | "login" | "signup";
+  namespace:
+    | "explore"
+    | "services"
+    | "specialists"
+    | "offers"
+    | "business"
+    | "login"
+    | "signup"
+    | "salons"
+    | "blog"
+    | "favorites"
+    | "paymentMethods"
+    | "settings";
 };
 
 export async function ComingSoonPage({ namespace }: ComingSoonPageProps) {
