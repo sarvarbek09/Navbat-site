@@ -6,6 +6,7 @@ export default function SignupPage() {
     <>
       <SiteHeader />
       <ComingSoonPage namespace="signup" />
+      {/* signup page /signup da emas, auth/register da */}
     </>
   );
 }

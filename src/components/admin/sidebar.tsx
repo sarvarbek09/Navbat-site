@@ -8,12 +8,12 @@ import { Button } from "../ui/button";
 
 const links: { name: string; icon: LucideIcon; href: string }[] = [
   {
-    name: "Foydalanuvchilar", 
+    name: "Foydalanuvchilar",
     icon: User,
     href: "/admin/users"
   },
   {
-    name: "Salonlar", 
+    name: "Salonlar",
     icon: Store,
     href: "/admin/salons"
   },
@@ -55,8 +55,8 @@ export function Sidebar() {
               Salon<span className="text-primary">Flow</span>
             </span>
           </Link>
-
         </div>
+        <div className="text-xs font-normal ml-12">Admin Console</div>
       </div>
       <div className="pt-10 pb-8 uppercase px-4 text-sm font-medium text-gray-400">boshqaruv</div>
       <nav className="flex-1 px-4 space-y-2.5">
