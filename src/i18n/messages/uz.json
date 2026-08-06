@@ -99,6 +99,10 @@
     "eyebrow": "KELAJAK — SOG'LIQ VA GO'ZALLIK",
     "title": "Soniyalar ichida <highlight>go'zallik</highlight> seansingizni band qiling",
     "description": "Hududingizdagi eng yuqori reytingga ega soch ustalari, manikyur mutaxassislari va sog'liqni saqlash bo'yicha professionallar bilan bog'laning. Professional xizmat, bir zumda band qilinadi.",
+    "searchPlaceholderSalon": "Salon yoki xizmat...",
+    "searchPlaceholderLocation": "Manzil",
+    "searchButton": "Qidirish",
+    "trustLine": "10 000+ mijoz tomonidan tanlangan",
     "cta": {
       "primary": "Hoziroq band qiling",
       "secondary": "Salon qo'shing"
@@ -192,12 +196,12 @@
         "role": "Tasdiqlangan mijoz"
       },
       {
-        "quote": "Professional sifatida samaradorlikni qadrlayman. SalonFlow orqali ish paytida hech qanday muammosiz uchrashuvlarimni band qilaman.",
+        "quote": "Professional sifatida samaradorlikni qadrlayman. SalonFlow orqali yo'lda ham hech qanday muammosiz uchrashuvlarimni band qilaman.",
         "name": "Jasur R.",
         "role": "Tasdiqlangan mijoz"
       },
       {
-        "quote": "Tanlangan ro'yxat orqali yangi mayda salonlarni kashf qilishni yaxshi ko'raman. Boshqacha bilmagan durdonalarni topdim.",
+        "quote": "Tanlangan ro'yxat orqali yangi salonlarni kashf qilishni yaxshi ko'raman. Boshqacha topa olmaydigan durdonalar topdim.",
         "name": "Amira K.",
         "role": "Tasdiqlangan mijoz"
       },
@@ -253,7 +257,7 @@
   },
   "footer": {
     "brand": "SalonFlow",
-    "tagline": "Nafis texnologiya va premium hamkorliklar orqali sog'lomlik bo'yicha bron qilish tajribasini qayta belgilaymiz.",
+    "tagline": "Nafis texnologiya va premium hamkorliklar orqali go'zallik bo'yicha bron qilish tajribasini qayta belgilaymiz.",
     "company": {
       "title": "Kompaniya",
       "aboutUs": "Biz haqimizda",
@@ -272,6 +276,91 @@
       "privacyPolicy": "Maxfiylik siyosati",
       "termsOfService": "Foydalanish shartlari"
     },
-    "copyright": "© 2026 SalonFlow. Barcha huquqlar himoyalangan."
+    "copyright": "© 2026 SalonFlow. Barcha huquqlar himoyalangan.",
+    "madeWith": "Go'zallik sanoati uchun yaratilgan"
+  },
+  "explore": {
+    "pageTitle": "Salonlarni kashf eting",
+    "pageSubtitle": "Yaqin atrofdagi eng yaxshi go'zallik mutaxassislarini toping va band qiling",
+    "filters": {
+      "title": "Filtrlar",
+      "category": "Kategoriya",
+      "categories": {
+        "hair": "Soch saloni",
+        "nail": "Manikyur spa",
+        "skin": "Teri va yuz parvarishi",
+        "massage": "Massaj terapiyasi"
+      },
+      "priceRange": "Narx oralig'i",
+      "minRating": "Min. reyting",
+      "distance": "Masofa",
+      "distanceUnit": "milya",
+      "availability": "Mavjudlik",
+      "openNow": "Hozir ochiq",
+      "clearAll": "Filtrlarni tozalash"
+    },
+    "sortBy": "Saralash",
+    "sortOptions": {
+      "recommended": "Tavsiya etilgan",
+      "topRated": "Eng yuqori reyting",
+      "nearest": "Eng yaqin",
+      "priceLow": "Narx: arzondan qimmatga",
+      "priceHigh": "Narx: qimmatdan arzonga"
+    },
+    "searchPlaceholder": "Salon nomi yoki xizmat bo'yicha qidirish...",
+    "salonsFound": "{count} ta salon topildi",
+    "noResults": "Salon topilmadi",
+    "noResultsHint": "Boshqa kalit so'z kiriting yoki filtrlarni o'zgartiring.",
+    "bookNow": "Band qilish",
+    "saveFavourite": "Saqlash",
+    "away": "uzoqlikda",
+    "more": "ta yana",
+    "pagination": {
+      "prev": "Oldingi sahifa",
+      "next": "Keyingi sahifa",
+      "page": "{n}-sahifa"
+    }
+  },
+  "salon": {
+    "premiumPartner": "Premium Hamkor",
+    "reviews": "{count} ta sharh",
+    "openUntil": "{time} gacha ochiq",
+    "tabs": {
+      "services": "Xizmatlar",
+      "about": "Biz haqimizda",
+      "staff": "Xodimlar",
+      "reviews": "Sharhlar"
+    },
+    "locationHours": "Manzil va ish vaqti",
+    "monFri": "Du – Ju",
+    "satSun": "Sha – Ya",
+    "getDirections": "Yo'nalish olish",
+    "whyChooseUs": "Nega bizni tanlash kerak?",
+    "whyPoints": {
+      "certified": "Sertifikatlangan mutaxassislar",
+      "certifiedDesc": "10 yildan ortiq tajribaga ega yuqori darajali ekspertlar.",
+      "organic": "Organik mahsulotlar",
+      "organicDesc": "Faqat premium, hayvonlarga zararsiz botanik mahsulotlardan foydalanamiz."
+    },
+    "ourSpecialists": "Bizning mutaxassislarimiz",
+    "services": {
+      "categories": {
+        "hairCare": "Soch parvarishi va turmak",
+        "facial": "Yuz va teri terapiyasi"
+      },
+      "addToCart": "Qo'shish",
+      "added": "Qo'shildi",
+      "min": "daqiqa"
+    },
+    "about": {
+      "text": "Lumière Wellness & Salon — Nyu-York shahrining markazida premium soch, teri va sog'lomlik xizmatlarini taklif etuvchi eksklyuziv butik. Sertifikatlangan jamoamiz so'nggi usullar va san'atni birlashtiradi.",
+      "mission": "Bizning maqsadimiz — har bir mijozni kirishidan chiqishigacha alohida his ettirish."
+    },
+    "reviews": {
+      "comingSoon": "Sharhlar tez orada qo'shiladi.",
+      "writeReview": "Sharh yozish"
+    },
+    "save": "Saqlash",
+    "share": "Ulashish"
   }
 }

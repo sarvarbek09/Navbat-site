@@ -272,6 +272,91 @@
       "privacyPolicy": "Privacy Policy",
       "termsOfService": "Terms of Service"
     },
-    "copyright": "© 2026 SalonFlow. All rights reserved."
+    "copyright": "© 2026 SalonFlow. All rights reserved.",
+    "madeWith": "Crafted for the wellness industry"
+  },
+  "explore": {
+    "pageTitle": "Discover Salons",
+    "pageSubtitle": "Find and book top-rated beauty professionals near you",
+    "filters": {
+      "title": "Filters",
+      "category": "Category",
+      "categories": {
+        "hair": "Hair Salon",
+        "nail": "Nail Spa",
+        "skin": "Skincare & Facial",
+        "massage": "Massage Therapy"
+      },
+      "priceRange": "Price Range",
+      "minRating": "Min. Rating",
+      "distance": "Distance",
+      "distanceUnit": "miles",
+      "availability": "Availability",
+      "openNow": "Open Now",
+      "clearAll": "Clear All Filters"
+    },
+    "sortBy": "Sort by",
+    "sortOptions": {
+      "recommended": "Recommended",
+      "topRated": "Top Rated",
+      "nearest": "Nearest",
+      "priceLow": "Price: Low–High",
+      "priceHigh": "Price: High–Low"
+    },
+    "searchPlaceholder": "Search by salon name or service...",
+    "salonsFound": "{count} salons found",
+    "noResults": "No salons found",
+    "noResultsHint": "Try a different search term or adjust your filters.",
+    "bookNow": "Book Now",
+    "saveFavourite": "Save to favourites",
+    "away": "away",
+    "more": "more",
+    "pagination": {
+      "prev": "Previous page",
+      "next": "Next page",
+      "page": "Page {n}"
+    }
+  },
+  "salon": {
+    "premiumPartner": "Premium Partner",
+    "reviews": "{count} Reviews",
+    "openUntil": "Open until {time}",
+    "tabs": {
+      "services": "Services",
+      "about": "About",
+      "staff": "Staff",
+      "reviews": "Reviews"
+    },
+    "locationHours": "Location & Hours",
+    "monFri": "Mon – Fri",
+    "satSun": "Sat – Sun",
+    "getDirections": "Get Directions",
+    "whyChooseUs": "Why choose us?",
+    "whyPoints": {
+      "certified": "Certified Professionals",
+      "certifiedDesc": "Top-tier experts with over 10 years of experience.",
+      "organic": "Organic Products",
+      "organicDesc": "We only use premium, cruelty-free botanicals."
+    },
+    "ourSpecialists": "Our Specialists",
+    "services": {
+      "categories": {
+        "hairCare": "Hair Styling & Care",
+        "facial": "Facial & Skin Therapy"
+      },
+      "addToCart": "Add",
+      "added": "Added",
+      "min": "min"
+    },
+    "about": {
+      "text": "Lumière Wellness & Salon is a premium boutique offering bespoke hair, skin, and wellness experiences in the heart of New York City. Our certified team blends artistry with the latest techniques for truly transformative results.",
+      "mission": "Our mission is to make every client feel exceptional — from the moment you walk in to the moment you leave."
+    },
+    "reviews": {
+      "comingSoon": "Reviews coming soon.",
+      "writeReview": "Write a Review"
+    },
+    "save": "Save",
+    "share": "Share"
   }
 }

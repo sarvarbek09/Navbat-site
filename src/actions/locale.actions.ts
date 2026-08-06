@@ -13,5 +13,5 @@ export async function setLocale(locale: Locale) {
     maxAge: 60 * 60 * 24 * 365,
   });
 
-  revalidatePath("/");
+  revalidatePath("/", "layout");
 }
