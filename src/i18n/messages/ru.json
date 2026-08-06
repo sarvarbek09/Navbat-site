@@ -8,7 +8,7 @@
       "blog": "Блог"
     },
     "search": {
-      "placeholder": "Найдите салон, услугу или специалиста...",
+      "placeholder": "Поиск салонов, услуг или специалистов...",
       "shortcutHint": "⌘K"
     },
     "location": {
@@ -52,15 +52,15 @@
     },
     "salons": {
       "title": "Салоны",
-      "description": "Список всех салонов и результаты поиска скоро появятся здесь."
+      "description": "Полный список салонов и результаты поиска скоро появятся здесь."
     },
     "blog": {
       "title": "Блог",
-      "description": "Статьи о красоте и уходе скоро будут опубликованы здесь."
+      "description": "Статьи о красоте и уходе за собой скоро появятся здесь."
     },
     "favorites": {
       "title": "Избранное",
-      "description": "Сохранённые салоны скоро появятся здесь."
+      "description": "Сохранённые вами салоны скоро появятся здесь."
     },
     "paymentMethods": {
       "title": "Способы оплаты",
@@ -99,10 +99,44 @@
     "eyebrow": "БУДУЩЕЕ ИНДУСТРИИ КРАСОТЫ",
     "title": "Забронируйте <highlight>преображение</highlight> за считаные секунды",
     "description": "Свяжитесь с лучшими стилистами, мастерами маникюра и специалистами по уходу в вашем городе. Профессиональный сервис — записаться проще простого.",
-    "searchPlaceholderSalon": "Салон или услуга...",
-    "searchPlaceholderLocation": "Местоположение",
-    "searchButton": "Найти",
-    "trustLine": "Нам доверяют 10 000+ клиентов"
+    "cta": {
+      "primary": "Записаться",
+      "secondary": "Добавить салон"
+    },
+    "stats": {
+      "bookingsValue": "10K+",
+      "bookingsLabel": "Записей",
+      "salonsValue": "500+",
+      "salonsLabel": "Салонов",
+      "ratingValue": "4.9",
+      "ratingLabel": "Рейтинг"
+    },
+    "features": {
+      "instantBooking": "Мгновенная запись",
+      "verifiedProfessionals": "Проверенные специалисты",
+      "securePayments": "Безопасная оплата"
+    },
+    "mockup": {
+      "confirmedTitle": "Запись подтверждена",
+      "confirmedSubtitle": "Сегодня, 14:30",
+      "salonCardName": "Lumina Spa",
+      "salonCardMeta": "Волосы и СПА",
+      "calendarLabel": "Расписание на сегодня",
+      "ratingValue": "4.9",
+      "ratingCount": "2 400+ отзывов",
+      "statusConfirmed": "Подтверждено",
+      "specialistName": "Camila Yusupova",
+      "customerLabel": "Клиент",
+      "customerName": "Дилноза Алиева",
+      "serviceLabel": "Услуга",
+      "serviceName": "Стрижка + борода",
+      "dateTimeLabel": "Дата и время",
+      "dateTimeValue": "Сегодня, 14:30",
+      "priceLabel": "Цена",
+      "priceValue": "$12.00",
+      "directionsButton": "Маршрут",
+      "rescheduleButton": "Перенести"
+    }
   },
   "featuredSalons": {
     "title": "Популярные салоны",
@@ -315,7 +349,7 @@
       "min": "мин"
     },
     "about": {
-      "text": "Lumière Wellness & Salon — это премиальный бутик в самом сердце Нью-Йорка, предлагающий эксклюзивные услуги по уходу за волосами, кожей и общему самочувствию. Наша сертифицированная команда сочетает мастерство с новейшими техниками.",
+      "text": "Lumière Wellness & Salon — это премиальный бутик в самом сердце Нью-Йорка, предлагающий эксклюзивные услуги по уходу за волосами, кожей и общему самочувствию.",
       "mission": "Наша миссия — сделать так, чтобы каждый клиент чувствовал себя исключительным — с момента прихода до момента ухода."
     },
     "reviews": {

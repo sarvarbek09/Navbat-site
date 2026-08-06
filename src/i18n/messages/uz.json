@@ -99,10 +99,44 @@
     "eyebrow": "KELAJAK — SOG'LIQ VA GO'ZALLIK",
     "title": "Soniyalar ichida <highlight>go'zallik</highlight> seansingizni band qiling",
     "description": "Hududingizdagi eng yuqori reytingga ega soch ustalari, manikyur mutaxassislari va sog'liqni saqlash bo'yicha professionallar bilan bog'laning. Professional xizmat, bir zumda band qilinadi.",
-    "searchPlaceholderSalon": "Salon yoki xizmat...",
-    "searchPlaceholderLocation": "Manzil",
-    "searchButton": "Qidirish",
-    "trustLine": "10 000+ mijoz tomonidan tanlangan"
+    "cta": {
+      "primary": "Hozir band qiling",
+      "secondary": "Salon qo'shing"
+    },
+    "stats": {
+      "bookingsValue": "10K+",
+      "bookingsLabel": "Bandlovlar",
+      "salonsValue": "500+",
+      "salonsLabel": "Salonlar",
+      "ratingValue": "4.9",
+      "ratingLabel": "Reyting"
+    },
+    "features": {
+      "instantBooking": "Tezkor band qilish",
+      "verifiedProfessionals": "Tasdiqlangan mutaxassislar",
+      "securePayments": "Xavfsiz to'lovlar"
+    },
+    "mockup": {
+      "confirmedTitle": "Band qilish tasdiqlandi",
+      "confirmedSubtitle": "Bugun, 14:30",
+      "salonCardName": "Lumina Spa",
+      "salonCardMeta": "Soch & Spa",
+      "calendarLabel": "Bugungi jadval",
+      "ratingValue": "4.9",
+      "ratingCount": "2,400+ sharh",
+      "statusConfirmed": "Tasdiqlandi",
+      "specialistName": "Camila Yusupova",
+      "customerLabel": "Mijoz",
+      "customerName": "Dilnoza Aliyeva",
+      "serviceLabel": "Xizmat",
+      "serviceName": "Soch olish + Soqol",
+      "dateTimeLabel": "Sana va vaqt",
+      "dateTimeValue": "Bugun, 14:30",
+      "priceLabel": "Narx",
+      "priceValue": "$12.00",
+      "directionsButton": "Yo'nalish",
+      "rescheduleButton": "Ko'chirish"
+    }
   },
   "featuredSalons": {
     "title": "Tanlangan salonlar",
@@ -315,7 +349,7 @@
       "min": "daqiqa"
     },
     "about": {
-      "text": "Lumière Wellness & Salon — Nyu-York shahrining markazida premium soch, teri va sog'lomlik xizmatlarini taklif etuvchi eksklyuziv butik. Sertifikatlangan jamoamiz so'nggi usullar va san'atni birlashtiradi.",
+      "text": "Lumière Wellness & Salon — Nyu-York shahrining markazida premium soch, teri va sog'lomlik xizmatlarini taklif etuvchi eksklyuziv butik.",
       "mission": "Bizning maqsadimiz — har bir mijozni kirishidan chiqishigacha alohida his ettirish."
     },
     "reviews": {
