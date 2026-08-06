@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -32,7 +33,7 @@ const nextConfig: NextConfig = {
         store: "pack",
         maxAge: 1000 * 60 * 60 * 24 * 14, // 14 days
         buildDependencies: {
-          config: [__filename],
+          config: [path.join(process.cwd(), "next.config.ts")],
         },
       };
     }
