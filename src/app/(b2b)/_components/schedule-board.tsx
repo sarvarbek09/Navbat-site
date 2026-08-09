@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Bell,
   Check,
@@ -35,6 +35,45 @@ type ScheduleBoardProps = {
 type ViewMode = "day" | "week" | "month";
 
 const WEEKDAYS = ["Du", "Se", "Ch", "Pa", "Ju", "Sh", "Ya"];
+
+// O'zbekcha oy nomlari — toLocaleDateString server/brauzerda farq qilgani uchun qo'lda formatlaymiz
+const MONTHS_SHORT = [
+  "Yan",
+  "Fev",
+  "Mar",
+  "Apr",
+  "May",
+  "Iyn",
+  "Iyl",
+  "Avg",
+  "Sen",
+  "Okt",
+  "Noy",
+  "Dek",
+];
+
+const MONTHS_LONG = [
+  "Yanvar",
+  "Fevral",
+  "Mart",
+  "Aprel",
+  "May",
+  "Iyun",
+  "Iyul",
+  "Avgust",
+  "Sentabr",
+  "Oktabr",
+  "Noyabr",
+  "Dekabr",
+];
+
+function formatDateShort(date: Date) {
+  return `${date.getDate()} ${MONTHS_SHORT[date.getMonth()]}, ${date.getFullYear()}`;
+}
+
+function formatMonthLong(date: Date) {
+  return `${MONTHS_LONG[date.getMonth()]} ${date.getFullYear()}`;
+}
 
 const statusLabels: Record<string, string> = {
   pending: "Yangi",
@@ -75,8 +114,16 @@ export function ScheduleBoard({ salonName, staff, bookings }: ScheduleBoardProps
     Object.fromEntries(staff.map((s) => [s.id, true]))
   );
   const [calendarMonth, setCalendarMonth] = useState(() => new Date());
+  // Hydration xatosini oldini olish: server va client vaqti farq qilishi mumkin
+  const [mounted, setMounted] = useState(false);
+  const [now, setNow] = useState(() => new Date());
 
-  const now = new Date();
+  useEffect(() => {
+    setMounted(true);
+    setNow(new Date());
+    const timer = setInterval(() => setNow(new Date()), 60_000);
+    return () => clearInterval(timer);
+  }, []);
 
   const bookingsOnDate = useMemo(
     () =>
@@ -155,10 +202,7 @@ export function ScheduleBoard({ salonName, staff, bookings }: ScheduleBoardProps
     return map;
   }, [bookings, checkedStaff, search]);
 
-  const monthLabel = calendarMonth.toLocaleDateString("uz-UZ", {
-    month: "long",
-    year: "numeric",
-  });
+  const monthLabel = formatMonthLong(calendarMonth);
 
   const weekDays = useMemo(() => {
     const arr: Date[] = [];
@@ -244,11 +288,7 @@ export function ScheduleBoard({ salonName, staff, bookings }: ScheduleBoardProps
             <ChevronLeft className="size-4" />
           </button>
           <span className="min-w-24 px-1 text-center text-sm font-bold text-foreground sm:min-w-28">
-            {selectedDate.toLocaleDateString("uz-UZ", {
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            })}
+            {formatDateShort(selectedDate)}
           </span>
           <button
             type="button"
@@ -495,7 +535,7 @@ export function ScheduleBoard({ salonName, staff, bookings }: ScheduleBoardProps
                         ))}
 
                         {/* Hozirgi vaqt chizig'i */}
-                        {nowLineTop !== null && (
+                        {mounted && nowLineTop !== null && (
                           <div
                             className="pointer-events-none absolute inset-x-0 z-10 flex items-center"
                             style={{ top: `${nowLineTop}%` }}

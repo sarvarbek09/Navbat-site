@@ -16,11 +16,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { db } from "@/lib/db";
-import { bookings, services, users } from "@/lib/schema";
-import { eq, and, desc, gte, lt, inArray, sum, count } from "drizzle-orm";
-import { getSession } from "@/lib/auth";
-import { getCurrentSalon } from "@/lib/salon";
 import { ServicesDonut } from "../_components/services-donut";
 
 function formatMoney(value: number) {
@@ -51,201 +46,114 @@ function serviceIcon(name: string): LucideIcon {
 
 const donutColors = ["#3525cd", "#7c3aed", "#0891b2", "#059669", "#d97706", "#e11d48"];
 
-export default async function DashboardPage() {
-  const session = await getSession();
-  const fullName = session?.name ?? "Aziz Karimov";
+/* ============================================================
+   DEFAULT (statik) MA'LUMOTLAR — backend ulanguncha ishlaydi
+   ============================================================ */
+
+const DEFAULT_SALON_OWNER = "Aziz Karimov";
+
+function formatTime(d: Date) {
+  return d.toLocaleTimeString("uz-UZ", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+// Bugungi default bronlar (vaqtlar joriy kunga mos, "Hozir" yorlig'i ko'rinadi)
+function buildDefaultSchedule(now: Date) {
+  const nowMinus90 = new Date(now.getTime() - 90 * 60000);
+  const nowMinus30 = new Date(now.getTime() - 30 * 60000);
+  const nowPlus60 = new Date(now.getTime() + 60 * 60000);
+  const nowPlus120 = new Date(now.getTime() + 120 * 60000);
+  const nowPlus180 = new Date(now.getTime() + 180 * 60000);
+
+  return [
+    {
+      id: "d1",
+      name: "Nilufar Rahimova",
+      service: "Soch olish",
+      time: formatTime(nowMinus90),
+      status: "completed",
+      isNow: false,
+    },
+    {
+      id: "d2",
+      name: "Bekzod Aliyev",
+      service: "Soch bo'yash",
+      time: formatTime(nowMinus30),
+      status: "completed",
+      isNow: false,
+    },
+    {
+      id: "d3",
+      name: "Malika Yusupova",
+      service: "Soch olish",
+      time: formatTime(now),
+      status: "confirmed",
+      isNow: true,
+    },
+    {
+      id: "d4",
+      name: "Jasur Toshmatov",
+      service: "Stilist xizmati",
+      time: formatTime(nowPlus60),
+      status: "confirmed",
+      isNow: false,
+    },
+    {
+      id: "d5",
+      name: "Dildora Normatova",
+      service: "Makiyaj",
+      time: formatTime(nowPlus120),
+      status: "pending",
+      isNow: false,
+    },
+    {
+      id: "d6",
+      name: "Gulzoda Karimova",
+      service: "Yuz tozalash",
+      time: formatTime(nowPlus180),
+      status: "pending",
+      isNow: false,
+    },
+  ];
+}
+
+export default function DashboardPage() {
+  const fullName = DEFAULT_SALON_OWNER;
   const firstName = fullName.split(" ")[0] ?? fullName;
   const lastNameInitial = fullName.split(" ")[1]?.[0] ?? "";
   const displayName = lastNameInitial ? `${firstName} ${lastNameInitial}.` : firstName;
 
-  const salon = await getCurrentSalon();
-
   const now = new Date();
-  const startOfDay = new Date();
-  startOfDay.setHours(0, 0, 0, 0);
 
-  const endOfDay = new Date(startOfDay);
-  endOfDay.setDate(endOfDay.getDate() + 1);
+  // KPI: bugungi daromad, navbatlar soni, trend
+  const todayRevenue = 1_250_000;
+  const todayCompleted = 3;
+  const todayPending = 2;
+  const yesterdayRevenue = 1_080_000;
 
-  const startOfYesterday = new Date(startOfDay);
-  startOfYesterday.setDate(startOfYesterday.getDate() - 1);
+  // Kunlik ish jadvali
+  const schedule = buildDefaultSchedule(now);
 
-  let todayRevenue = 0;
-  let todayCompleted = 0;
-  let todayPending = 0;
-  let yesterdayRevenue = 0;
-  let nextClient: {
-    name: string;
-    time: string;
-    service: string;
-  } | null = null;
+  // Navbatdagi mijoz — jadvaldagi "Hozir" bronidan (bog'liq bo'lmasin, bir xil ko'rinsin)
+  const nowBooking = schedule.find((s) => s.isNow) ?? schedule[0];
+  const nextClient = nowBooking
+    ? {
+        name: nowBooking.name,
+        service: nowBooking.service,
+        time: `${nowBooking.time} — ${formatTime(new Date(now.getTime() + 30 * 60000))}`,
+      }
+    : null;
 
-  let schedule: {
-    id: string;
-    name: string;
-    service: string;
-    time: string;
-    status: string;
-    isNow: boolean;
-  }[] = [];
-
-  let donutSegments: { label: string; value: number; color: string }[] = [];
-  let donutTotal = 0;
-
-  if (salon) {
-    const [revenueRow] = await db
-      .select({ total: sum(services.price) })
-      .from(bookings)
-      .innerJoin(services, eq(bookings.serviceId, services.id))
-      .where(
-        and(
-          eq(bookings.salonId, salon.id),
-          gte(bookings.date, startOfDay),
-          lt(bookings.date, endOfDay),
-          inArray(bookings.status, ["confirmed", "completed"])
-        )
-      );
-    todayRevenue = Number(revenueRow?.total ?? 0);
-
-    const [completedRow] = await db
-      .select({ total: count() })
-      .from(bookings)
-      .where(
-        and(
-          eq(bookings.salonId, salon.id),
-          gte(bookings.date, startOfDay),
-          lt(bookings.date, endOfDay),
-          eq(bookings.status, "completed")
-        )
-      );
-    todayCompleted = Number(completedRow?.total ?? 0);
-
-    const [pendingRow] = await db
-      .select({ total: count() })
-      .from(bookings)
-      .where(
-        and(
-          eq(bookings.salonId, salon.id),
-          gte(bookings.date, startOfDay),
-          lt(bookings.date, endOfDay),
-          eq(bookings.status, "pending")
-        )
-      );
-    todayPending = Number(pendingRow?.total ?? 0);
-
-    const [yesterdayRow] = await db
-      .select({ total: sum(services.price) })
-      .from(bookings)
-      .innerJoin(services, eq(bookings.serviceId, services.id))
-      .where(
-        and(
-          eq(bookings.salonId, salon.id),
-          gte(bookings.date, startOfYesterday),
-          lt(bookings.date, startOfDay),
-          inArray(bookings.status, ["confirmed", "completed"])
-        )
-      );
-    yesterdayRevenue = Number(yesterdayRow?.total ?? 0);
-
-    // Bugungi navbatdagi keyingi mijoz (kelgusi eng yaqin bron)
-    const queueBookings = await db
-      .select({
-        booking: bookings,
-        service: services,
-        client: users,
-      })
-      .from(bookings)
-      .innerJoin(services, eq(bookings.serviceId, services.id))
-      .innerJoin(users, eq(bookings.clientId, users.id))
-      .where(
-        and(
-          eq(bookings.salonId, salon.id),
-          gte(bookings.date, startOfDay),
-          lt(bookings.date, endOfDay),
-          inArray(bookings.status, ["pending", "confirmed"])
-        )
-      )
-      .orderBy(bookings.date)
-      .limit(1);
-
-    const next = queueBookings[0];
-    if (next) {
-      const start = new Date(next.booking.date);
-      const end = new Date(start.getTime() + next.service.duration * 60000);
-      nextClient = {
-        name: next.client.name,
-        service: next.service.name,
-        time: `${start.toLocaleTimeString("uz-UZ", {
-          hour: "2-digit",
-          minute: "2-digit",
-        })} — ${end.toLocaleTimeString("uz-UZ", {
-          hour: "2-digit",
-          minute: "2-digit",
-        })}`,
-      };
-    }
-
-    // Kunlik ish jadvali — bugungi bronlar
-    const todayBookings = await db
-      .select({
-        booking: bookings,
-        service: services,
-        client: users,
-      })
-      .from(bookings)
-      .innerJoin(services, eq(bookings.serviceId, services.id))
-      .innerJoin(users, eq(bookings.clientId, users.id))
-      .where(
-        and(
-          eq(bookings.salonId, salon.id),
-          gte(bookings.date, startOfDay),
-          lt(bookings.date, endOfDay)
-        )
-      )
-      .orderBy(bookings.date);
-
-    schedule = todayBookings
-      .filter(({ booking }) => booking.status !== "cancelled")
-      .map(({ booking, service, client }) => {
-        const start = new Date(booking.date);
-        const end = new Date(start.getTime() + service.duration * 60000);
-        const isNow = now >= start && now <= end;
-        return {
-          id: booking.id,
-          name: client.name,
-          service: service.name,
-          time: `${start.toLocaleTimeString("uz-UZ", {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}`,
-          status: booking.status,
-          isNow,
-        };
-      });
-
-    // Xizmatlar ulushi — bugungi bronlar bo'yicha
-    const serviceCounts = await db
-      .select({ name: services.name, total: count() })
-      .from(bookings)
-      .innerJoin(services, eq(bookings.serviceId, services.id))
-      .where(
-        and(
-          eq(bookings.salonId, salon.id),
-          gte(bookings.date, startOfDay),
-          lt(bookings.date, endOfDay),
-          inArray(bookings.status, ["completed", "confirmed"])
-        )
-      )
-      .groupBy(services.name)
-      .orderBy(desc(count()));
-
-    donutSegments = serviceCounts.map((row, i) => ({
-      label: row.name,
-      value: Number(row.total),
-      color: donutColors[i % donutColors.length],
-    }));
-    donutTotal = donutSegments.reduce((acc, s) => acc + s.value, 0);
-  }
+  // Xizmatlar ulushi (donut)
+  const donutSegments = [
+    { label: "Soch olish", value: 5, color: donutColors[0] },
+    { label: "Soch bo'yash", value: 4, color: donutColors[1] },
+    { label: "Makiyaj", value: 3, color: donutColors[2] },
+    { label: "Yuz tozalash", value: 2, color: donutColors[3] },
+  ];
+  const donutTotal = donutSegments.reduce((acc, s) => acc + s.value, 0);
 
   const trend =
     yesterdayRevenue > 0
