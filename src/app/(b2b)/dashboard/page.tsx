@@ -264,6 +264,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
+
+
         {/* Navbatdagi mijoz */}
         <div className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-br from-accent/60 via-white to-white p-5 shadow-soft-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-soft">
           <div className="pointer-events-none absolute -right-10 -top-10 size-36 rounded-full bg-primary/10 blur-2xl" />
