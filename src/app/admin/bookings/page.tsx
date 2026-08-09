@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Filter, Upload } from "lucide-react";
 import TotalBookings from "./components/total-bookings";
+import { AdvancedBookingsTable } from "./components/admin-bookings-table";
+import { bookingsTableData } from "./types";
 
 export default function AdminBookings() {
   return <div>
@@ -19,6 +21,9 @@ export default function AdminBookings() {
     </div>
     <div className="mt-12">
       <TotalBookings/>
+    </div>
+    <div className="mt-16">
+      <AdvancedBookingsTable data={bookingsTableData}/>
     </div>
   </div>;
 }

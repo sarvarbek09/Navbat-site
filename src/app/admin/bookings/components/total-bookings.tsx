@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CircleCheckBig, CircleDollarSign, ClipboardClock, Clock, DollarSign, ShieldCheck, Store, TrendingUp, User } from "lucide-react";
+import { AdvancedBookingsTable } from "./admin-bookings-table";
 export default function TotalBookings() {
     return (
         <div className="grid grid-cols-4 gap-6">
@@ -31,6 +32,7 @@ export default function TotalBookings() {
                 </div>
                 <div className="flex gap-2 items-center"><span className="text-3xl font-semibold text-white">42</span><span className="text-(--admin-green) flex items-center"><TrendingUp size={12} />12%</span></div>
             </div>
+
         </div>
     )
 }
