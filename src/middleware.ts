@@ -15,22 +15,25 @@ const publicPaths = [
   "/business",
   "/login",
   "/signup",
+  // Hozircha login qismi yo'q — b2b sahifalar ham ochiq
+  "/dashboard",
+  "/schedule",
+  "/clients",
+  "/earnings",
+  "/settings",
+  "/my-bookings",
+  "/profile",
 ];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const session = request.cookies.get("navbat_session")?.value;
 
-  if (publicPaths.some((p) => pathname.startsWith(p))) {
-    return NextResponse.next();
-  }
+  // Eslatma: "/" prefix hamma yo'lga mos keladi, shuning uchun
+  // aniq moslik (exact match) ishlatamiz
+  const isPublic =
+    publicPaths.some((p) => p === "/" ? pathname === "/" : pathname === p || pathname.startsWith(p + "/"));
 
-  if (!session) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-
-  if (pathname.startsWith("/dashboard") || pathname.startsWith("/schedule") || pathname.startsWith("/clients") || pathname.startsWith("/earnings")) {
-    // B2B routes — role check happens in layout
+  if (isPublic) {
     return NextResponse.next();
   }
 
