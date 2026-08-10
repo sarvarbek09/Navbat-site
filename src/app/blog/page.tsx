@@ -1,12 +1,12 @@
 import { SiteHeader } from "@/components/header/site-header";
-import { ComingSoonPage } from "@/components/coming-soon-page";
+import { BlogHeroSection } from "@/components/blog-hero-section";
 import { SiteFooter } from "@/components/site-footer";
 
 export default function BlogPage() {
   return (
     <>
       <SiteHeader />
-      <ComingSoonPage namespace="blog" />
+      <BlogHeroSection />
       <SiteFooter />
     </>
   );

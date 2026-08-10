@@ -1,12 +1,14 @@
 import { SiteHeader } from "@/components/header/site-header";
-import { ComingSoonPage } from "@/components/coming-soon-page";
+import { SearchHero } from "@/components/search-hero";
+import { ServiceCardsSection } from "@/components/service-cards-section";
 import { SiteFooter } from "@/components/site-footer";
 
 export default function ServicesPage() {
   return (
     <>
       <SiteHeader />
-      <ComingSoonPage namespace="services" />
+      <SearchHero />
+      <ServiceCardsSection />
       <SiteFooter />
     </>
   );
