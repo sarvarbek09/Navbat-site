@@ -32,11 +32,11 @@ const links: { name: string; icon: LucideIcon; href: string }[] = [
     icon: ChartColumnBig,
     href: "/admin/reports"
   },
-  {
-    name: "Sozlamalar",
-    icon: Settings,
-    href: "/admin/settings"
-  },
+  // {
+  //   name: "Sozlamalar",
+  //   icon: Settings,
+  //   href: "/admin/settings"
+  // },
 ];
 export function Sidebar() {
   const pathname = usePathname();
