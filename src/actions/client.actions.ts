@@ -1,21 +1,14 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { users, bookings, salons } from "@/lib/schema";
-import { requireAuth } from "@/lib/auth";
+import { users, bookings } from "@/lib/schema";
+import { getCurrentSalon } from "@/lib/salon";
 import { createClientSchema } from "@/schemas/client";
-import { eq, and, desc } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
 export async function getClients() {
-  const session = await requireAuth("owner");
-
-  const [salon] = await db
-    .select()
-    .from(salons)
-    .where(eq(salons.ownerId, session.id))
-    .limit(1);
-
+  const salon = await getCurrentSalon();
   if (!salon) return [];
 
   const clients = await db
@@ -34,8 +27,6 @@ export async function getClients() {
 }
 
 export async function getClientBookings(clientId: string) {
-  await requireAuth("owner");
-
   return db
     .select()
     .from(bookings)
@@ -44,8 +35,6 @@ export async function getClientBookings(clientId: string) {
 }
 
 export async function createClient(formData: FormData) {
-  await requireAuth("owner");
-
   const parsed = createClientSchema.safeParse({
     name: formData.get("name"),
     phone: formData.get("phone"),
