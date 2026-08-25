@@ -81,22 +81,20 @@ const LoginPage = () => {
         <button
           type="button"
           onClick={() => setAuthMethod("phone")}
-          className={`py-2 rounded-md transition-all ${
-            authMethod === "phone"
+          className={`py-2 rounded-md transition-all ${authMethod === "phone"
               ? "bg-white text-gray-900 shadow-sm"
               : "text-gray-500 hover:text-gray-900"
-          }`}
+            }`}
         >
           Phone Number
         </button>
         <button
           type="button"
           onClick={() => setAuthMethod("email")}
-          className={`py-2 rounded-md transition-all ${
-            authMethod === "email"
+          className={`py-2 rounded-md transition-all ${authMethod === "email"
               ? "bg-white text-gray-900 shadow-sm"
               : "text-gray-500 hover:text-gray-900"
-          }`}
+            }`}
         >
           Email
         </button>
@@ -172,6 +170,13 @@ const LoginPage = () => {
         >
           {authMethod === "phone" ? "Send SMS Code" : "Sign In"}
         </button>
+
+        <p className="text-center text-sm text-gray-600 mt-6">
+          Don't have an account?{" "}
+          <Link href="/auth/register" className="text-blue-500 font-semibold hover:underline">
+            Register
+          </Link>
+        </p>
       </form>
     </div>
   )
