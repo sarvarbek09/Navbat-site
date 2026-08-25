@@ -1,120 +1,62 @@
-import { db } from "@/lib/db";
-import { blockedSlots, bookings, salons } from "@/lib/schema";
-import { eq, and, gte, desc } from "drizzle-orm";
-import { getSession } from "@/lib/auth";
-import { unblockTimeSlot } from "@/actions/availability.actions";
-import { ScheduleRealtime } from "@/components/schedule-realtime";
-import { BlockTimeForm } from "../_components/block-time-form";
+import { ScheduleBoard } from "../_components/schedule-board";
 
-export default async function SchedulePage() {
-  const session = await getSession();
+/* ============================================================
+   DEFAULT (statik) MA'LUMOTLAR — backend ulanguncha ishlaydi
+   ============================================================ */
 
-  const [salon] = await db
-    .select()
-    .from(salons)
-    .where(eq(salons.ownerId, session!.id))
-    .limit(1);
+const DEFAULT_SALON_NAME = "Lumiere Hair Studio";
 
-  if (!salon) {
-    return <p className="text-gray-500">Salon topilmadi</p>;
-  }
+const DEFAULT_STAFF = [
+  { id: "staff-aziza", name: "Aziza M.", color: "#3525cd" },
+  { id: "staff-dilnoza", name: "Dilnoza R.", color: "#0891b2" },
+  { id: "staff-sardor", name: "Sardor K.", color: "#92400e" },
+];
 
-  const now = new Date();
+// Bugungi sana atrofidagi default bronlar — kalendar va jadvalda ko'rinadi
+function buildDefaultBookings() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  const blocked = await db
-    .select()
-    .from(blockedSlots)
-    .where(and(eq(blockedSlots.salonId, salon.id), gte(blockedSlots.endTime, now)))
-    .orderBy(blockedSlots.startTime);
+  const at = (dayOffset: number, hours: number, minutes: number) => {
+    const d = new Date(today);
+    d.setDate(d.getDate() + dayOffset);
+    d.setHours(hours, minutes, 0, 0);
+    return d;
+  };
 
-  const upcomingBookings = await db
-    .select()
-    .from(bookings)
-    .where(
-      and(
-        eq(bookings.salonId, salon.id),
-        gte(bookings.date, now)
-      )
-    )
-    .orderBy(bookings.date);
+  const rows = [
+    // Bugun
+    { day: 0, h: 9, m: 30, client: "Nilufar Rahimova", service: "Soch olish", dur: 60, staff: "staff-aziza", status: "completed" },
+    { day: 0, h: 10, m: 30, client: "Bekzod Aliyev", service: "Soch bo'yash", dur: 90, staff: "staff-dilnoza", status: "completed" },
+    { day: 0, h: 11, m: 0, client: "Jasur Toshmatov", service: "Stilist xizmati", dur: 45, staff: "staff-sardor", status: "completed" },
+    { day: 0, h: 12, m: 30, client: "Malika Yusupova", service: "Soch olish", dur: 60, staff: "staff-aziza", status: "confirmed" },
+    { day: 0, h: 14, m: 0, client: "Dildora Normatova", service: "Makiyaj", dur: 50, staff: "staff-dilnoza", status: "confirmed" },
+    { day: 0, h: 15, m: 30, client: "Gulzoda Karimova", service: "Yuz tozalash", dur: 40, staff: "staff-sardor", status: "pending" },
+    { day: 0, h: 17, m: 0, client: "Malika Yusupova", service: "Soch bo'yash", dur: 90, staff: "staff-aziza", status: "confirmed" },
+    { day: 0, h: 19, m: 0, client: "Jasur Toshmatov", service: "Soch olish", dur: 60, staff: "staff-dilnoza", status: "pending" },
+    // Ertaga
+    { day: 1, h: 10, m: 0, client: "Malika Yusupova", service: "Makiyaj", dur: 50, staff: "staff-dilnoza", status: "confirmed" },
+    { day: 1, h: 11, m: 30, client: "Bekzod Aliyev", service: "Soch olish", dur: 60, staff: "staff-aziza", status: "pending" },
+    { day: 1, h: 15, m: 0, client: "Nilufar Rahimova", service: "Soch bo'yash", dur: 90, staff: "staff-sardor", status: "confirmed" },
+    // Indinga
+    { day: 2, h: 12, m: 0, client: "Dildora Normatova", service: "Stilist xizmati", dur: 45, staff: "staff-sardor", status: "confirmed" },
+    { day: 2, h: 16, m: 30, client: "Gulzoda Karimova", service: "Soch olish", dur: 60, staff: "staff-aziza", status: "pending" },
+  ];
 
-  const activeBookings = upcomingBookings.filter(
-    (b) => b.status !== "cancelled"
-  );
+  return rows.map((r, i) => ({
+    id: `booking-${i + 1}`,
+    date: at(r.day, r.h, r.m).toISOString(),
+    status: r.status,
+    clientName: r.client,
+    serviceName: r.service,
+    serviceDuration: r.dur,
+    staffId: r.staff,
+  }));
+}
 
-  return (
-    <div>
-      <ScheduleRealtime salonId={salon.id} />
+export default function SchedulePage() {
+  const staff = DEFAULT_STAFF;
+  const bookings = buildDefaultBookings();
 
-      <h1 className="text-2xl font-bold">Jadval</h1>
-      <p className="mt-1 text-sm text-gray-500">
-        Band vaqtlarni belgilang — qolgan vaqt avtomatik bo&apos;sh
-      </p>
-
-      {/* Band vaqt qo'shish */}
-      <BlockTimeForm />
-
-      {/* Band vaqtlar ro'yxati */}
-      <section className="mt-8">
-        <h2 className="font-semibold text-red-600">Band vaqtlar</h2>
-        {blocked.length === 0 ? (
-          <p className="mt-2 text-sm text-gray-400">Band vaqt yo&apos;q</p>
-        ) : (
-          <ul className="mt-3 space-y-2">
-            {blocked.map((slot) => (
-              <li
-                key={slot.id}
-                className="flex flex-col gap-2 rounded-lg border border-red-100 bg-red-50 p-3 sm:flex-row sm:items-center sm:justify-between"
-              >
-                <div>
-                  <p className="text-sm font-medium">
-                    {slot.startTime.toLocaleString("uz-UZ")} —{" "}
-                    {slot.endTime.toLocaleTimeString("uz-UZ", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </p>
-                  {slot.reason && (
-                    <p className="text-xs text-gray-500">{slot.reason}</p>
-                  )}
-                </div>
-                <form
-                  action={async () => {
-                    "use server";
-                    await unblockTimeSlot(slot.id);
-                  }}
-                >
-                  <button
-                    type="submit"
-                    className="text-xs text-green-700 hover:underline"
-                  >
-                    Bo&apos;shatish
-                  </button>
-                </form>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      {/* Bronlar (avtomatik band) */}
-      <section className="mt-8">
-        <h2 className="font-semibold text-blue-600">Bronlar (avtomatik band)</h2>
-        {activeBookings.length === 0 ? (
-          <p className="mt-2 text-sm text-gray-400">Kelgusi bronlar yo&apos;q</p>
-        ) : (
-          <ul className="mt-3 space-y-2">
-            {activeBookings.map((b) => (
-              <li
-                key={b.id}
-                className="rounded-lg border border-blue-100 bg-blue-50 p-3 text-sm"
-              >
-                {b.date.toLocaleString("uz-UZ")} — {b.status}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-    </div>
-  );
+  return <ScheduleBoard salonName={DEFAULT_SALON_NAME} staff={staff} bookings={bookings} />;
 }

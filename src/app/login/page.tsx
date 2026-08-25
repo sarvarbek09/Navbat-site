@@ -6,6 +6,7 @@ export default function LoginPage() {
     <>
       <SiteHeader />
       <ComingSoonPage namespace="login" />
+      {/* LOGIN page /login da emas, auth/login da */}
     </>
   );
 }

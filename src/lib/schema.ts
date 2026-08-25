@@ -44,6 +44,16 @@ export const services = pgTable("services", {
   duration: integer("duration").notNull(), // minutes
 });
 
+export const staff = pgTable("staff", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  salonId: uuid("salon_id")
+    .notNull()
+    .references(() => salons.id),
+  name: text("name").notNull(),
+  color: text("color"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export const bookings = pgTable("bookings", {
   id: uuid("id").primaryKey().defaultRandom(),
   salonId: uuid("salon_id")
@@ -55,6 +65,7 @@ export const bookings = pgTable("bookings", {
   serviceId: uuid("service_id")
     .notNull()
     .references(() => services.id),
+  staffId: uuid("staff_id").references(() => staff.id),
   status: bookingStatusEnum("status").notNull().default("pending"),
   date: timestamp("date").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -75,5 +86,6 @@ export const blockedSlots = pgTable("blocked_slots", {
 export type User = typeof users.$inferSelect;
 export type Salon = typeof salons.$inferSelect;
 export type Service = typeof services.$inferSelect;
+export type Staff = typeof staff.$inferSelect;
 export type Booking = typeof bookings.$inferSelect;
 export type BlockedSlot = typeof blockedSlots.$inferSelect;

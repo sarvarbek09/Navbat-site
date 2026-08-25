@@ -31,3 +31,13 @@ export type RealtimeEvent = {
 export type ActionResult<T> =
   | { data: T; error?: never }
   | { error: string | Record<string, string[]>; data?: never };
+
+export interface AdminPageSalon {
+  title: string
+  owner: string
+  imageUrl: string
+  types: string[]
+  badge: string
+  rating: number
+  reviews: number
+}
