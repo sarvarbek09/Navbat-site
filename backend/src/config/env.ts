@@ -9,7 +9,13 @@ import { z } from "zod";
 const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(4000),
   DATABASE_URL: z.string().min(1, "DATABASE_URL kerak (.env faylini tekshiring)"),
-  FRONTEND_ORIGIN: z.string().min(1).default("http://localhost:3000"),
+  // Vergul bilan ajratilgan ro'yxat (masalan: "http://localhost:3000,https://navbat-site.vercel.app") —
+  // CORS shu ro'yxatdagi ISTALGAN origin'dan kelgan so'rovga ruxsat beradi.
+  FRONTEND_ORIGIN: z
+    .string()
+    .min(1)
+    .default("http://localhost:3000,https://navbat-site.vercel.app")
+    .transform((value) => value.split(",").map((origin) => origin.trim())),
   BOT_B2C_TOKEN: z.string().optional(),
   BOT_B2B_TOKEN: z.string().optional(),
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),

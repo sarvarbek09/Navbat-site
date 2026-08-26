@@ -4,6 +4,7 @@ import {
   timestamp,
   uuid,
   integer,
+  doublePrecision,
   pgEnum,
 } from "drizzle-orm/pg-core";
 
@@ -31,6 +32,8 @@ export const salons = pgTable("salons", {
     .references(() => users.id),
   name: text("name").notNull(),
   address: text("address"),
+  latitude: doublePrecision("latitude"),
+  longitude: doublePrecision("longitude"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

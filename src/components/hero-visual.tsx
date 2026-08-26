@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   BatteryFull,
   CalendarClock,
@@ -13,7 +13,7 @@ import {
   Star,
   Wifi,
 } from "lucide-react";
-import type { ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
 
 export type HeroMockupLabels = {
   confirmedTitle: string;
@@ -98,8 +98,35 @@ function DetailRow({ label, value }: { label: string; value: string }) {
 }
 
 export function HeroVisual({ labels }: HeroVisualProps) {
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(pointerY, [-0.5, 0.5], [8, -8]), {
+    stiffness: 150,
+    damping: 20,
+  });
+  const rotateY = useSpring(useTransform(pointerX, [-0.5, 0.5], [-8, 8]), {
+    stiffness: 150,
+    damping: 20,
+  });
+
+  function handlePointerMove(event: MouseEvent<HTMLDivElement>) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    pointerX.set((event.clientX - rect.left) / rect.width - 0.5);
+    pointerY.set((event.clientY - rect.top) / rect.height - 0.5);
+  }
+
+  function handlePointerLeave() {
+    pointerX.set(0);
+    pointerY.set(0);
+  }
+
   return (
-    <div className="relative mx-auto flex h-[560px] w-full max-w-[440px] items-center justify-center sm:h-[640px] lg:h-[680px]">
+    <div
+      className="relative mx-auto flex h-[560px] w-full max-w-[440px] items-center justify-center sm:h-[640px] lg:h-[680px]"
+      onMouseMove={handlePointerMove}
+      onMouseLeave={handlePointerLeave}
+      style={{ perspective: 1200 }}
+    >
       {/* Depth blobs */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-1/2 size-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
@@ -112,6 +139,7 @@ export function HeroVisual({ labels }: HeroVisualProps) {
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: "easeOut" }}
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className="relative z-10"
       >
         {/* Side controls */}

@@ -228,22 +228,17 @@
       }
     ]
   },
-  "faq": {
-    "title": "Frequently Asked Questions",
-    "items": [
-      {
-        "question": "How do I book an appointment?",
-        "answer": "Simply search for a salon or service, pick an available time slot, and confirm your booking in seconds — no phone calls needed."
-      },
-      {
-        "question": "Can I cancel or reschedule my booking?",
-        "answer": "Yes, you can cancel or reschedule directly from your dashboard up until the salon's cancellation window."
-      },
-      {
-        "question": "Is SalonFlow free to use?",
-        "answer": "Yes, booking through SalonFlow is completely free for clients. Salons pay a small service fee per booking."
-      }
-    ]
+  "nearbySalons": {
+    "title": "Salons near you",
+    "subtitle": "Turn on your location to see the best salons around you on the map",
+    "locateButton": "Find my location",
+    "locating": "Locating...",
+    "permissionDenied": "Location access denied — showing default area",
+    "unsupported": "Your browser doesn't support geolocation",
+    "empty": "No salons to show on the map yet",
+    "viewSalon": "View",
+    "distanceAway": "{distance} km away",
+    "salonsNearby": "salons nearby"
   },
   "cta": {
     "title": "Ready to transform your beauty routine?",
@@ -319,7 +314,10 @@
   },
   "salon": {
     "premiumPartner": "Premium Partner",
-    "reviews": "{count} Reviews",
+    "reviews": {
+      "comingSoon": "Reviews coming soon.",
+      "writeReview": "Write a Review"
+    },
     "openUntil": "Open until {time}",
     "tabs": {
       "services": "Services",
@@ -352,11 +350,56 @@
       "text": "Lumière Wellness & Salon is a premium boutique offering bespoke hair, skin, and wellness experiences in the heart of New York City. Our certified team blends artistry with the latest techniques for truly transformative results.",
       "mission": "Our mission is to make every client feel exceptional — from the moment you walk in to the moment you leave."
     },
-    "reviews": {
-      "comingSoon": "Reviews coming soon.",
-      "writeReview": "Write a Review"
-    },
     "save": "Save",
     "share": "Share"
+  },
+  "auth": {
+    "layout": {
+      "title": "Elevate your wellness experience.",
+      "subtitle": "Manage appointments, connect with premium specialists, and find your flow in the world of beauty and relaxation.",
+      "statsBookings": "Bookings",
+      "statsSalons": "Salons",
+      "backHome": "Back home"
+    },
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Enter your details to access your dashboard.",
+      "telegramCta": "Sign in with Telegram",
+      "orEmail": "or with email",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "name@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "rememberMe": "Remember me for 30 days",
+      "forgotPassword": "Forgot password?",
+      "submit": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up"
+    },
+    "register": {
+      "title": "Create your account",
+      "subtitle": "Sign up in seconds and start booking.",
+      "telegramCta": "Sign up with Telegram",
+      "orEmail": "or with email",
+      "usernameLabel": "Username",
+      "usernamePlaceholder": "Username",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "name@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "confirmPasswordLabel": "Confirm password",
+      "confirmPasswordPlaceholder": "••••••••",
+      "submit": "Create account",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in"
+    },
+    "telegram": {
+      "title": "Continue with Telegram",
+      "subtitle": "Who are you signing in as?",
+      "clientTitle": "For clients",
+      "clientDesc": "Discover salons and services, book appointments",
+      "businessTitle": "For business owners",
+      "businessDesc": "Manage your salon, schedule, and clients"
+    }
   }
 }

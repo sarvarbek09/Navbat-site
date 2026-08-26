@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Sparkles, Star, Store, Zap, ShieldCheck, Lock } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { HeroVisual } from "@/components/hero-visual";
+import { HeroSceneLoader } from "@/components/hero-scene-loader";
 
 export async function HeroSection() {
   const t = await getTranslations("hero");
@@ -23,6 +24,7 @@ export async function HeroSection() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-secondary via-white to-white" />
       <div className="absolute -left-32 -top-32 -z-10 size-96 rounded-full bg-primary/10 blur-3xl" />
       <div className="absolute -bottom-40 left-1/4 -z-10 size-96 rounded-full bg-accent/30 blur-3xl" />
+      <HeroSceneLoader />
 
       <div className="relative mx-auto grid w-full max-w-[1280px] items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10 lg:px-10">
         <div className="motion-safe:animate-fade-up">
@@ -74,9 +76,11 @@ export async function HeroSection() {
             {features.map((feature) => (
               <span
                 key={feature.label}
-                className="inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-white/70 px-3.5 py-1.5 text-xs font-semibold text-muted-foreground shadow-sm backdrop-blur-sm"
+                className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-white/70 py-1.5 pl-1.5 pr-3.5 text-xs font-semibold text-muted-foreground shadow-sm backdrop-blur-sm transition-transform duration-300 hover:-translate-y-0.5"
               >
-                <feature.icon className="size-3.5 text-primary" />
+                <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary/15 to-violet-500/20 text-primary">
+                  <feature.icon className="size-3" />
+                </span>
                 {feature.label}
               </span>
             ))}
