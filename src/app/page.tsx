@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/hero-section";
 import { PopularServicesSection } from "@/components/popular-services-section";
 import { FeaturedSalonsSection } from "@/components/featured-salons-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
-import { FaqSection } from "@/components/faq-section";
+import { NearbySalonsSection } from "@/components/nearby-salons-section";
 import { CtaSection } from "@/components/cta-section";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -15,7 +15,7 @@ export default function HomePage() {
       <PopularServicesSection />
       <FeaturedSalonsSection />
       <TestimonialsSection />
-      <FaqSection />
+      <NearbySalonsSection />
       <CtaSection />
       <SiteFooter />
     </main>

@@ -1,66 +1,70 @@
-const RegisterPage = () => {
-    return (
-        <div className="flex flex-col items-center justify-center min-h-screen">
-            <h1 className="text-4xl font-bold mb-4">Register</h1>
-            <form className="w-full max-w-sm">
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-                        Username
-                    </label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="username"
-                        type="text"
-                        placeholder="Username"
-                    />
-                </div>  
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                        Email
-                    </label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="email"
-                        type="email"
-                        placeholder="Email"
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-                        Password
-                    </label>
-                    <input
+import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Mail, User } from "lucide-react";
+import { AuthField } from "../_components/auth-field";
+import { PasswordField } from "../_components/password-field";
+import { TelegramCta } from "../_components/telegram-cta";
+import { AuthDivider } from "../_components/auth-divider";
 
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="password"
-                        type="password"
-                        placeholder="Password"
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">
-                        Confirm Password
-                    </label>
-                    <input
+export default async function RegisterPage() {
+  const t = await getTranslations("auth.register");
 
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="confirmPassword"
-                        type="password"
-                        placeholder="Confirm Password"
-                    />
-                </div>
-                <div className="flex items-center justify-between">
-                    <button
+  return (
+    <div className="motion-safe:animate-fade-up">
+      <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground">{t("title")}</h2>
+      <p className="mt-2 text-sm text-muted-foreground">{t("subtitle")}</p>
 
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                        type="submit"
-                    >
-                        Register
-                    </button>
-                </div>
-            </form>
-        </div>
-    )
+      <div className="mt-8">
+        <TelegramCta href="/auth/telegram" label={t("telegramCta")} />
+      </div>
+
+      <div className="mt-6">
+        <AuthDivider label={t("orEmail")} />
+      </div>
+
+      <form className="mt-6 flex flex-col gap-5">
+        <AuthField
+          id="username"
+          label={t("usernameLabel")}
+          icon={User}
+          placeholder={t("usernamePlaceholder")}
+          autoComplete="username"
+        />
+        <AuthField
+          id="email"
+          label={t("emailLabel")}
+          icon={Mail}
+          type="email"
+          placeholder={t("emailPlaceholder")}
+          autoComplete="email"
+        />
+        <PasswordField
+          id="password"
+          label={t("passwordLabel")}
+          placeholder={t("passwordPlaceholder")}
+          autoComplete="new-password"
+        />
+        <PasswordField
+          id="confirmPassword"
+          label={t("confirmPasswordLabel")}
+          placeholder={t("confirmPasswordPlaceholder")}
+          autoComplete="new-password"
+        />
+
+        <button
+          type="submit"
+          className="mt-1 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary via-indigo-600 to-violet-500 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30"
+        >
+          {t("submit")}
+        </button>
+      </form>
+
+      <p className="mt-8 text-center text-sm text-muted-foreground">
+        {t("haveAccount")}{" "}
+        <Link href="/auth/login" className="font-semibold text-primary hover:underline">
+          {t("signInLink")}
+        </Link>
+      </p>
+    </div>
+  );
 }
-
-export default RegisterPage

@@ -232,22 +232,17 @@
       }
     ]
   },
-  "faq": {
-    "title": "Ko'p beriladigan savollar",
-    "items": [
-      {
-        "question": "Qanday qilib uchrashuvga yozilaman?",
-        "answer": "Shunchaki salon yoki xizmatni qidiring, bo'sh vaqtni tanlang va soniyalar ichida bronni tasdiqlang — qo'ng'iroq qilish shart emas."
-      },
-      {
-        "question": "Bronni bekor qilish yoki ko'chirish mumkinmi?",
-        "answer": "Ha, boshqaruv panelingizdan salonning bekor qilish muddati ichida bronni bekor qilishingiz yoki ko'chirishingiz mumkin."
-      },
-      {
-        "question": "SalonFlow'dan foydalanish bepulmi?",
-        "answer": "Ha, mijozlar uchun SalonFlow orqali band qilish butunlay bepul. Salonlar har bir bron uchun kichik xizmat haqi to'laydi."
-      }
-    ]
+  "nearbySalons": {
+    "title": "Sizga eng yaqin salonlar",
+    "subtitle": "Joylashuvingizni yoqing va atrofingizdagi eng yaxshi salonlarni xaritada ko'ring",
+    "locateButton": "Joylashuvimni aniqlash",
+    "locating": "Joylashuv aniqlanmoqda...",
+    "permissionDenied": "Joylashuvga ruxsat berilmadi — standart hudud ko'rsatilmoqda",
+    "unsupported": "Brauzeringiz joylashuvni aniqlashni qo'llab-quvvatlamaydi",
+    "empty": "Hozircha xaritada ko'rsatiladigan salon topilmadi",
+    "viewSalon": "Ko'rish",
+    "distanceAway": "{distance} km uzoqlikda",
+    "salonsNearby": "atrofdagi salonlar"
   },
   "cta": {
     "title": "Go'zallik odatlaringizni o'zgartirishga tayyormisiz?",
@@ -323,7 +318,10 @@
   },
   "salon": {
     "premiumPartner": "Premium Hamkor",
-    "reviews": "{count} ta sharh",
+    "reviews": {
+      "comingSoon": "Sharhlar tez orada qo'shiladi.",
+      "writeReview": "Sharh yozish"
+    },
     "openUntil": "{time} gacha ochiq",
     "tabs": {
       "services": "Xizmatlar",
@@ -356,11 +354,56 @@
       "text": "Lumière Wellness & Salon — Nyu-York shahrining markazida premium soch, teri va sog'lomlik xizmatlarini taklif etuvchi eksklyuziv butik. Sertifikatlangan jamoamiz so'nggi usullar va san'atni birlashtiradi.",
       "mission": "Bizning maqsadimiz — har bir mijozni kirishidan chiqishigacha alohida his ettirish."
     },
-    "reviews": {
-      "comingSoon": "Sharhlar tez orada qo'shiladi.",
-      "writeReview": "Sharh yozish"
-    },
     "save": "Saqlash",
     "share": "Ulashish"
+  },
+  "auth": {
+    "layout": {
+      "title": "Go'zallik olamidagi tajribangizni yangi bosqichga olib chiqing.",
+      "subtitle": "Uchrashuvlarni boshqaring, premium mutaxassislar bilan bog'laning va go'zallik hamda dam olish dunyosida o'z ritmingizni toping.",
+      "statsBookings": "Bandlovlar",
+      "statsSalons": "Salonlar",
+      "backHome": "Bosh sahifaga"
+    },
+    "login": {
+      "title": "Xush kelibsiz",
+      "subtitle": "Shaxsiy kabinetingizga kirish uchun ma'lumotlaringizni kiriting.",
+      "telegramCta": "Telegram orqali kirish",
+      "orEmail": "yoki email orqali",
+      "emailLabel": "Email manzil",
+      "emailPlaceholder": "email@misol.com",
+      "passwordLabel": "Parol",
+      "passwordPlaceholder": "••••••••",
+      "rememberMe": "30 kun eslab qolish",
+      "forgotPassword": "Parolni unutdingizmi?",
+      "submit": "Kirish",
+      "noAccount": "Hisobingiz yo'qmi?",
+      "signUpLink": "Ro'yxatdan o'ting"
+    },
+    "register": {
+      "title": "Hisob yarating",
+      "subtitle": "Bir necha soniyada ro'yxatdan o'ting va band qilishni boshlang.",
+      "telegramCta": "Telegram orqali ro'yxatdan o'tish",
+      "orEmail": "yoki email orqali",
+      "usernameLabel": "Foydalanuvchi nomi",
+      "usernamePlaceholder": "Foydalanuvchi nomi",
+      "emailLabel": "Email manzil",
+      "emailPlaceholder": "email@misol.com",
+      "passwordLabel": "Parol",
+      "passwordPlaceholder": "••••••••",
+      "confirmPasswordLabel": "Parolni tasdiqlang",
+      "confirmPasswordPlaceholder": "••••••••",
+      "submit": "Ro'yxatdan o'tish",
+      "haveAccount": "Hisobingiz bormi?",
+      "signInLink": "Kiring"
+    },
+    "telegram": {
+      "title": "Telegram orqali kirish",
+      "subtitle": "Kim sifatida davom etmoqchisiz?",
+      "clientTitle": "Mijozlar uchun",
+      "clientDesc": "Salon va xizmatlarni qidiring, bandlov qiling",
+      "businessTitle": "Biznes egasi uchun",
+      "businessDesc": "Salonni boshqaring, jadval va mijozlarni kuzating"
+    }
   }
 }
